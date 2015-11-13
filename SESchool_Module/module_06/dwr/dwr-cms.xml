@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 0.4//EN" "http://www.getahead.ltd.uk/dwr/dwr.dtd">
+
+<dwr>
+	<allow>
+		<convert converter="collection" match="java.util.Collection"/>
+		<convert converter="map"		match="java.util.Map"/>
+		<convert converter="list"		match="java.util.List"/>
+		<convert converter="bean"		match="com.sinc.framework.data.Box"/>
+		<convert converter="bean"		match="com.sinc.common.CodeParamDTO"/>
+		<convert converter="bean"		match="com.sinc.framework.persist.PagingDTO"/>
+		
+		<create creator="new" javascript="CateWork">
+			<param name="class" value="com.sinc.cms.manage.CategoryBaction"/>
+			<include method="cateListCallBack"/>
+			<include method="cateWriteCallBack"/>
+			<include method="cateReorderCallBack"/>
+		</create>	
+		
+		<create creator="new" javascript="ContentsWork">
+			<param name="class" value="com.sinc.cms.contents.ContentsBaction"/>
+			<include method="myContentsPageListCallBack"/>
+			<include method="contentsSearchPageListCallBack"/>
+			<include method="bookmarkPageListCallBack"/>
+			<include method="contentsRecPageListCallBack"/>
+			<include method="contentsRepPageListCallBack"/>
+			<include method="contentsBookmarkCallBack"/>
+			<include method="contentsRecommCallBack"/>
+			<include method="myReqContentsPageListCallBack"/>
+			<include method="externalContentsPageListCallBack"/>
+			
+		</create>
+		
+		<create creator="new" javascript="ItemWork">
+			<param name="class" value="com.sinc.cms.item.ItemBaction"/>
+			<include method="itemListCallBack"/>
+			<include method="itemPreviewCallBack"/>
+			<include method="itemReorderCallBack"/>
+			<include method="itemCopyCallBack"/>
+			<include method="itemDeleteCallBack"/>
+		</create>
+		
+		<create creator="new" javascript="HistoryWork">
+			<param name="class" value="com.sinc.cms.history.HistoryBaction"/>
+			<include method="historyPageListCallBack"/>
+		</create>
+		
+		<create creator="new" javascript="MasterWork">
+			<param name="class" value="com.sinc.cms.master.MasterBaction"/>
+			<include method="masterMenuListCallBack"/>
+			<include method="masterMenuReorderCallBack"/>
+		</create>	
+
+		<create creator="new" javascript="ProjectWork">
+			<param name="class" value="com.sinc.cms.project.ProjectBaction"/>
+			<include method="projectPageListCallBack"/>
+		</create>	
+		
+		<create creator="new" javascript="ProductWork">
+			<param name="class" value="com.sinc.cms.product.ProductBaction"/>
+			<include method="productItemListCallBack"/>
+			<include method="productListCallBack"/>
+			<include method="productContentListCallBack"/>
+			<include method="productReorderCallBack"/>
+			<include method="productItemStateChangeCallBack"/>
+			<include method="productDateMgrCallBack"/>
+			<include method="productItemCallBack"/>
+		</create>	
+		
+		<create creator="new" javascript="TotalBoardWork">
+			<param name="class" value="com.sinc.cms.bbs.TotalBoardBaction"/>
+			<include method="totalBoardListCallBack"/>
+		</create>	
+		
+		<create creator="new" javascript="FreeBoardWork">
+			<param name="class" value="com.sinc.cms.bbs.FreeBoardBaction"/>		
+			<include method="freeBoardMainPageListCallBack"/>	
+			<include method="freeBoardPageListCallBack"/>
+			<include method="freeBoardCommentListCallBack"/>			
+		</create>	
+
+	</allow>
+</dwr>

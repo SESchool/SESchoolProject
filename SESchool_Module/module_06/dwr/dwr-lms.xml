@@ -1,0 +1,891 @@
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 0.4//EN" "http://www.getahead.ltd.uk/dwr/dwr.dtd">
+
+<dwr>
+	<allow>
+		<convert converter="collection" match="java.util.Collection"/>
+		<convert converter="map"		match="java.util.Map"/>
+		<convert converter="list"		match="java.util.List"/>
+		<convert converter="bean"		match="com.sinc.framework.data.Box"/>
+		<convert converter="bean"		match="com.sinc.common.CodeParamDTO"/>
+		<convert converter="bean"		match="com.sinc.framework.persist.PagingDTO"/>
+
+		<create creator="new" javascript="CommonUtilWork">
+			<param name="class" value="com.sinc.common.CommonUtil"/>
+			<include method="sampleSubjattCode"/>
+			<include method="selectSubjattCode"/>
+			<include method="selectComattCode"/>
+			<include method="selectSubjattClassMakeCode"/>
+			<include method="selectSubjCode"/>
+			<include method="selectCourse"/>
+			<include method="selectCourse2"/>
+			<include method="selectSubj"/>
+			<include method="selectSubjAll"/>
+			<include method="selectCourseSubjSeq"/>
+			<include method="selectJumsuattCode"/>
+			<include method="selectGrCode"/>
+			<include method="setSessionValue"/>
+			<include method="setGadminCallBack"/>
+			<include method="setSessionMenuCallBack"/>
+			<include method="setSessionFrontMenuCallBack"/>
+			<include method="setSessionFrontMainMenuCallBack"/>
+			<include method="setSessionDirectMenuCallBack"/>
+			<include method="setSessionDirectMenuCallBack2"/>
+			<include method="setSessionDirectMenuCallBack3"/>
+			<include method="setSessionExternalMenuCallBack"/>
+			<include method="setSessionBtocMenuCallBack"/>
+			<include method="setSessionBtocMenuCallBack2"/>
+			<include method="selectTestInning"/>
+			<include method="getCodeList"/>
+			<include method="getRightTestNmSubjectList"/>
+			<include method="selectComAttCode2"/>
+			<include method="getComp"/>
+			<include method="getBusinessPlc"/>
+			<include method="getJikmu"/>
+			<include method="getJikchek"/>
+			<include method="getJikup"/>
+			<include method="getGrSubjList"/>
+			<include method="selectBook"/>
+			<include method="selectSubjSeqBook"/>
+			<include method="getSubjMonth"/>
+			<include method="getSubjList"/>
+			<include method="getTestSubjectList"/>
+			<include method="getConsubjList"/>
+			<include method="getSubjectSulmun"/>
+			<include method="selectHomepageGroup"/>
+			<include method="selectSubjSeq"/>
+			<include method="selectOpenSubjAttCode"/>
+			<include method="selectExternalSubjAttCode"/>
+			<include method="getElectno"/>
+			<include method="getSpotDicTeamListBox"/>
+			<include method="getReportSubjBook"/>
+			<include method="selectProjReportType"/>
+			<include method="selectMemoCntCallBack"/>
+			<include method="getGrCompCallBack"/>
+			<include method="getSubjBookList"/>
+			<include method="getAntePostSubjseqList"/>
+			<include method="selectUccSubjAttCode"/>
+			<include method="getLinkSubject"/>
+			<include method="getSubject"/>
+			<include method="getSubjectSeq"/>
+			<include method="getConSubjectSeq"/>
+			<include method="getConSubCouseCode"/>
+			<include method="getConSubTeamCode"/>
+			<include method="getSubSubSubCode"/>
+			<include method="getSubjectTutor"/>
+			<include method="selectCourseSubjSeq"/>
+			<include method="getProjReport"/>
+			<include method="getNowDate"/>
+			<include method="ckeckStudyHistory"/>
+			<include method="selectZipCodeStreet"/>
+			<include method="getChangeArea"/>
+		</create>
+
+		<create creator="new" javascript="FileUtilWork">
+			<param name="class" value="com.sinc.framework.util.FileUtil"/>
+			<include method="getDirectory"/>
+			<include method="getFileList"/>
+			<include method="delDirectory"/>
+			<include method="delFile"/>
+		</create>
+
+		<create creator="new" javascript="CommonWork">
+			<param name="class" value="com.sinc.common.CommonBaction"/>
+		    <include method="compPageListCallBack"/>
+			<include method="deptPageListCallBack"/>
+			<include method="memberSearchPageListCallBack"/>
+			<include method="grcodeSearchPageListCallBack"/>
+			<include method="subjSearchPageListCallBack"/>
+			<include method="subjSearchPageListCallBack2"/>
+			<include method="businessplcSearchPageListCallBack"/>
+			<include method="staffSearchPageListCallBack"/>
+			<include method="contentsSearchPageListCallBack"/>
+			
+		</create>
+
+		<create creator="new" javascript="CodeWork">
+			<param name="class" value="com.sinc.lms.code.CodeBaction"/>
+			<include method="codeGubunPageListCallBack"/>
+			<include method="codeListCallBack"/>
+		</create>
+		<create creator="new" javascript="SubjSeqInfoFWork">
+			<param name="class" value="com.sinc.lms.course.SubjSeqInfoFaction"/>
+			<include method="subjSeqRelateCallBack"/>
+		</create>
+		<create creator="new" javascript="SubjectInfoFWork">
+			<param name="class" value="com.sinc.lms.course.SubjectInfoFaction"/>
+			<include method="subjRelateCallBack"/>
+			<include method="getCompSubjectPageListCallBack"/>
+			<include method="getBestCompSubjectListCallBack"/>
+			<include method="ckeckStudyHistory"/>
+			<include method="xmlParse"/>
+		</create>
+		<create creator="new" javascript="StudyControlWork">
+			<param name="class" value="com.sinc.lms.studycontrol.StudyControlBaction"/>
+			<include method="studyControlListCallBack"/>
+		</create>
+		<create creator="new" javascript="StudyBookWork">
+			<param name="class" value="com.sinc.lms.studybook.StudyBookBaction"/>
+			<include method="studyBookListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="OrganWork">
+			<param name="class" value="com.sinc.lms.organization.OrganBaction"/>
+			<include method="organListCallBack"/>
+		</create>
+		<create creator="new" javascript="JikchekWork">
+			<param name="class" value="com.sinc.lms.duty.JikchekBaction"/>
+			<include method="jikchekListCallBack"/>
+		</create>
+		<create creator="new" javascript="JikupWork">
+			<param name="class" value="com.sinc.lms.duty.JikupBaction"/>
+			<include method="jikupListCallBack"/>
+		</create>
+		<create creator="new" javascript="JikmuWork">
+			<param name="class" value="com.sinc.lms.duty.JikmuBaction"/>
+			<include method="jikmuListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ContactWork">
+			<param name="class" value="com.sinc.lms.homepage.ContactBaction"/>
+			<include method="contactListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ContactWork2">
+			<param name="class" value="com.sinc.lms.homepage.ContactFaction"/>
+			<include method="contactListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="MenuWork">
+			<param name="class" value="com.sinc.lms.menu.MenuBaction"/>
+			<include method="menuListCallBack"/>
+			<include method="menuList02CallBack"/>
+		</create>
+
+		<create creator="new" javascript="ClassifySubjectWork">
+			<param name="class" value="com.sinc.lms.course.ClassifySubjectBaction"/>
+			<include method="classifySubjectListCallBack"/>
+			<include method="classifySubjectPageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="EduGroupWork">
+			<param name="class" value="com.sinc.lms.course.EduGroupBaction"/>
+			<include method="eduGroupListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="PermissionWork">
+			<param name="class" value="com.sinc.lms.permission.PermissionBaction"/>
+			<include method="permissionListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="DicWork">
+			<param name="class" value="com.sinc.lms.dic.DicBaction"/>
+			<include method="dicListCallBack"/>
+		</create>
+		<create creator="new" javascript="HistoryDicWork">
+			<param name="class" value="com.sinc.lms.dic.HistoryDicBaction"/>
+			<include method="historyDicListCallBack"/>
+		</create>
+		<create creator="new" javascript="SpotDicWork">
+			<param name="class" value="com.sinc.lms.dic.SpotDicBaction"/>
+			<include method="spotDicListCallBack"/>
+		</create>
+		<create creator="new" javascript="DeptCodeWork">
+			<param name="class" value="com.sinc.lms.dic.DeptCodeBaction"/>
+			<include method="deptCodePageListCallBack"/>
+			<include method="teamCodePageListCallBack"/>
+		</create>
+		<create creator="new" javascript="TotalBoardWork">
+			<param name="class" value="com.sinc.lms.bbs.TotalBoardBaction"/>
+			<include method="totalBoardPageListCallBack"/>
+		</create>
+		<create creator="new" javascript="BbsBoardWork">
+			<param name="class" value="com.sinc.lms.bbs.BbsBoardBaction"/>
+			<include method="bbsBoardPageListCallBack"/>
+			<include method="bbsBoardCommentListCallBack"/>
+		</create>
+		<create creator="new" javascript="BbsBoardWork2">
+			<param name="class" value="com.sinc.lms.bbs.BbsBoardFaction"/>
+			<include method="bbsBoardPageListCallBack"/>
+		</create>
+		<create creator="new" javascript="BbsFreeBoardWork">
+			<param name="class" value="com.sinc.lms.bbs.BbsFreeBoardBaction"/>
+			<include method="bbsFreeBoardPageListCallBack"/>
+			<include method="bbsFreeBoardCommentListCallBack"/>
+		</create>
+		<create creator="new" javascript="BbsFreeBoardFWork">
+			<param name="class" value="com.sinc.lms.bbs.BbsFreeBoardFaction"/>
+			<include method="bbsFreeBoardCutListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="BbsImageBoardWork">
+			<param name="class" value="com.sinc.lms.bbs.BbsImageBoardBaction"/>
+			<include method="bbsImageBoardPageListCallBack"/>
+			<include method="bbsImageBoardCommentListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="SubjectWork">
+			<param name="class" value="com.sinc.lms.course.SubjectBaction"/>
+			<include method="subjectListCallBack"/>
+			<include method="conSubjectListCallBack"/>
+			<include method="subjectApprovalListCallBack"/>
+			<include method="studyControlListCallBack"/>
+			<include method="compCategoryListCallBack"/>
+			<include method="getSubjVerificationRelateCallBack"/>
+			<include method="subjectPostScriptListCallBack"/>
+			<include method="insertITabOnlineSubjCallBack"/><!-- 추가2013.11.06 -->
+			<include method="deleteITabOnlineSubjCallBack"/><!-- 추가2013.11.06 -->
+		</create>
+		<create creator="new" javascript="SubjSeqWork">
+			<param name="class" value="com.sinc.lms.course.SubjSeqBaction"/>
+			<include method="subjSeqListCallBack"/>
+			<include method="subjSeqAssignedListCallBack"/>
+			<include method="subjSeqDetailListCallBack"/>
+			<include method="grSubjListCallBack"/>
+			<include method="grSubjSeqListCallBack"/>
+			<include method="getGrSubjectRelateCallBack"/>
+			<include method="subjSeqListCallBack02"/>
+			<include method="getSubjSeqMockStudyRelateCallBack"/>
+			<include method="getSubjSeqVerificationRelateCallBack"/>
+			<include method="getSubjSeqStepPageListCallBack"/>
+			<include method="cpSaveEvalTutorCallBack"/>  <!-- 추가_강의평가 점수 추가 등록 -->
+
+		</create>
+
+		<create creator="new" javascript="MemberWork">
+			<param name="class" value="com.sinc.lms.member.MemberBaction"/>
+			<include method="memberPageListCallBack"/>
+			<include method="btocMemberPageListCallBack"/>
+			<include method="memberSrchLogPageListCallBack"/>
+			<include method="outerMemberPageListCallBack"/>
+			<include method="alliedPageListCallBack"/>
+			<include method="prefixCheckCallBack"/>
+			<include method="useridCheckCallBack"/>
+			<include method="tradeMemberPageListCallBack"/>
+			<include method="memberRegStatisticListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="SulmunWork">
+			<param name="class" value="com.sinc.lms.sulmun.SulmunBaction"/>
+			<include method="sulPaperListCallBack"/>
+			<include method="sulPaperQuestionListCallBack"/>
+			<include method="sulPaperComListCallBack"/>
+			<include method="sulComQuestionListCallBack"/>
+			<include method="sulSubjPaperListCallBack"/>
+			<include method="sulSubjQuestionListCallBack"/>
+			<include method="sulPaperObjListCallBack"/>
+			<include method="sulPaperMemberWriteCallBack"/>
+			<include method="sulPaperCodeListCallBack"/>
+			<include method="sulSubjPaperCodeListCallBack"/>
+			<include method="sulPaperComCodeListCallBack"/>
+			<include method="sulmunStatisticListCallBack"/>			
+		</create>
+
+		<create creator="new" javascript="ManagerWork">
+			<param name="class" value="com.sinc.lms.system.ManagerBaction"/>
+			<include method="managerListCallBack"/>
+		</create>
+
+	    <create creator="new" javascript="FaqCategoryWork">
+			<param name="class" value="com.sinc.lms.homepage.FaqBaction"/>
+			<include method="faqCategoryPageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="FaqWork">
+			<param name="class" value="com.sinc.lms.homepage.FaqBaction"/>
+			<include method="faqListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="PRDepartWork">
+			<param name="class" value="com.sinc.lms.homepage.PRDepartBaction"/>
+			<include method="prDepartListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="EduPdsWork">
+			<param name="class" value="com.sinc.lms.homepage.EduPdsBaction"/>
+			<include method="eduPdsListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ErrorBbsWork">
+			<param name="class" value="com.sinc.lms.homepage.ErrorBbsBaction"/>
+			<include method="errorBbsListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ApplyWork">
+			<param name="class" value="com.sinc.lms.propose.ApplyBaction"/>
+			<include method="applyPageListCallBack"/>
+			<include method="applyStatusPageListCallBack"/>
+		</create>
+		
+		<create creator="new" javascript="OpenApplyWork">
+			<param name="class" value="com.sinc.lms.propose.ApplyBaction"/>
+			<include method="openApplyPageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ApprovalWork">
+			<param name="class" value="com.sinc.lms.propose.ApprovalBaction"/>
+			<include method="approvalPageListB2BCallBack"/>
+			<include method="approvalPageListB2CCallBack"/>
+		</create>
+
+		<create creator="new" javascript="RefundWork">
+			<param name="class" value="com.sinc.lms.propose.RefundBaction"/>
+			<include method="refundListCallBack"/>
+			<include method="paymentdListCallBack"/>
+			<include method="paymentdCourseListCallBack"/>
+			<include method="paymentdSectionListCallBack"/>
+			<include method="refundListSectionCallBack"/>
+		</create>
+
+		<create creator="new" javascript="BillPublishWork">
+			<param name="class" value="com.sinc.lms.billpublish.BillPublishBaction"/>
+			<include method="billPubReqListCallBack"/>
+			<include method="billPublishListCallBack"/>
+			<include method="examBillPubReqListCallBack"/>
+			<include method="examBillPublishListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="BlackListWrok">
+			<param name="class" value="com.sinc.lms.blacklist.BlackListBaction"/>
+			<include method="blackListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="TrainingPlanWork">
+			<param name="class" value="com.sinc.lms.propose.TrainingPlanBaction"/>
+			<include method="CDPListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="StudentManagerWork">
+			<param name="class" value="com.sinc.lms.propose.StudentManagerBaction"/>
+			<include method="studentManagerListCallBack"/>
+			<include method="studentTargetListCallBack"/>
+			<include method="studentTargetListCallBack2"/>
+			<include method="studentTargetDetailListCallBack"/>
+			<include method="studentManagerChangeSeqListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="DelayApplyWork">
+			<param name="class" value="com.sinc.lms.propose.DelayApplyBaction"/>
+			<include method="delayApplyListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="TutorWork">
+			<param name="class" value="com.sinc.lms.tutor.TutorBaction"/>
+			<include method="tutorPageListCallBack"/>
+			<include method="tutorStatusPageListCallBack"/>
+			<include method="tutorChargePageListCallBack"/>
+			<include method="commAttListCallBack"/>
+			<include method="tutorHistoryListCallBack"/>
+			<include method="tutorSubjHistoryListCallBack"/>
+			<include method="tutorClassHistoryListCallBack"/>
+			<include method="tutorCareerListCallBack"/>
+			<include method="tutorMemoListCallBack"/>
+			<include method="tutorLectureHistoryListCallBack"/>
+			<include method="tutorStudentStatusPageListCallBack"/>
+			<include method="tutorStudentListCallBack"/>
+			<include method="professorSulListCallBack"/>
+			<include method="professorSulSumCallBack"/>
+			<include method="professorChargePageListCallBack"/>
+			<include method="writerChargePageListCallBack"/>
+			<include method="tutorOnlineStatisticListCallBack"/>
+			<include method="professorStatisticListCallBack"/>
+			<include method="getLowerclassList"/>
+			<include method="getTutorGradeList"/>
+			<include method="tutorMonthScheduleListCallBack"/>
+			
+		</create>
+
+		<create creator="new" javascript="PopNoticeWork">
+			<param name="class" value="com.sinc.lms.popnotice.PopNoticeBaction"/>
+			<include method="popNoticeListPageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ClassMakeWork">
+			<param name="class" value="com.sinc.lms.classmake.ClassMakeBaction"/>
+			<include method="classMakeListCallBack"/>
+			<include method="classListCallBack"/>
+			<include method="classStudentListPageCallBack"/>
+			<include method="classStudentListCallBack"/>
+			<include method="teamMakeListCallBack"/>
+			<include method="teamStudentListPageCallBack"/>
+		</create>
+
+		<create creator="new" javascript="EduManagementWork">
+			<param name="class" value="com.sinc.lms.edumanagement.EduManagementToronBaction"/>
+			<include method="eduManagementToronListCallBack"/>
+			<include method="eduManagementToronGubunListCallBack"/>
+			<include method="eduManagementToronViewListCallBack"/>
+			<include method="eduManagementToronGubunAllListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ManageScheduleWork">
+			<param name="class" value="com.sinc.lms.edumanagement.ManageScheduleBaction"/>
+			<include method="schedulePageListCallBack"/>
+			<include method="scheduleHistoryPageListCallBack"/>
+			<include method="scheduleHistorySendListCallBack"/>
+			<include method="scheduleSubjPageListCallBack"/>   <!-- 2013.10.29 -->
+			<include method="insertScheduleSubjRepositoryCallBack"/>   <!-- 2013.10.29 -->
+			<include method="scheduleSubjRepositoryPageCallBack"/>  <!-- 2013.10.31 -->
+			<include method="deleteScheduleSubjRepository"/> <!-- 2013.10.31 -->
+		</create>
+
+		<create creator="new" javascript="ReportMakeWork">
+			<param name="class" value="com.sinc.lms.report.ReportMakeBaction"/>
+			<include method="reportMakeSubjectListCallBack"/>
+			<include method="reportMakeDistributionListCallBack"/>
+			<include method="reportMakeDistributionListDetailCallBack"/>
+			<include method="reportGradingListCallBack"/>
+			<include method="reportMakeGradingListCallBack"/>
+			<include method="reportMakeGradingAllListCallBack"/>
+			<include method="reportMakeGradingListViewCallBack"/>
+			<include method="reportMakeGradingAllListViewCallBack"/>
+			<include method="reportManageListCallBack"/>
+			<include method="reportMakeGradingViewCallBack"/>
+			<include method="reportResultListCallBack"/>
+			<include method="reportResultDetailListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ProposeCancelWork">
+			<param name="class" value="com.sinc.lms.propose.ProposeCancelBaction"/>
+			<include method="proposeCancelListCallBack"/>
+			<include method="proposeCancelHistoryListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="CPCompWork">
+			<param name="class" value="com.sinc.lms.cp.CPCompBaction"/>
+			<include method="cpCompListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="CPSubjectWork">
+			<param name="class" value="com.sinc.lms.cp.CPSubjectBaction"/>
+			<include method="cpSubjectListCallBack"/>
+		</create>
+		<create creator="new" javascript="CPSubjSeqWork">
+			<param name="class" value="com.sinc.lms.cp.CPSubjSeqBaction"/>
+			<include method="cpSubjSeqPageListCallBack"/>
+			<include method="cpSubjSeqStudentPageListCallBack"/>
+			<include method="cpSubjSeqStudentPageList2CallBack"/>
+			<include method="cpStudentPageListCallBack"/>
+			<include method="linkCpSubjSeqStudentPageListCallBack"/>
+			
+				<!--
+				* 
+				*	성적관리 들어가는 메서드 cpScoreExcelListCallBack
+				*	2013.09.24
+				*
+				-->
+<!-- 			<include method="cpScoreExcelListCallBack"/> -->
+		</create>
+		<create creator="new" javascript="CPResultWork">
+			<param name="class" value="com.sinc.lms.cp.CPResultBaction"/>
+			<include method="cpResultPageListCallBack"/>
+			
+				<!--
+				* 
+				*	성적관리에서 개별 수정후 저장시 들어가는 메서드 cpScoreExcelSaveCallBack 
+				*	2013.09.24
+				*
+				-->
+			<include method="cpScoreExcelSaveCallBack"/>
+
+			
+		</create>
+		<create creator="new" javascript="FinishWork">
+			<param name="class" value="com.sinc.lms.complete.FinishBaction"/>
+			<include method="finishListCallBack"/>
+			<include method="finishSubjectListCallBack"/>
+			<include method="finishCourseListCallBack"/>
+			<include method="finishReadCourseListCallBack"/>
+			<include method="finishSubjectStudentListCallBack"/>
+			<include method="finishCompleteStudentListCallBack"/>
+			<include method="finishStudentListCallBack"/>
+			<include method="finishStudentBLListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ExternalCourseWork">
+			<param name="class" value="com.sinc.lms.complete.ExternalCourseBaction"/>
+			<include method="externalCourseManageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="OpenSubjWork">
+			<param name="class" value="com.sinc.lms.contents.OpenSubjBaction"/>
+			<include method="openSubjPageListCallBack"/>
+			<include method="cpOpenSubjPageListCallBack"/>
+			<include method="openSubjEstimatePageListCallBack"/>
+			<include method="openSubjEstimatePageListPopCallBack"/>
+			<include method="getContentsItemListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="OpenCourseWork">
+			<param name="class" value="com.sinc.lms.contents.OpenSubjFaction"/>
+			<include method="openCourseEstimateListCallBack"/>
+			<include method="openCourseEstimateWriteCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ContentsWork">
+			<param name="class" value="com.sinc.lms.contents.ContentsBaction"/>
+			<include method="contentsImitationListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="MessageWork">
+			<param name="class" value="com.sinc.lms.message.MessageBaction"/>
+			<include method="messageSenderListCallBack"/>
+			<include method="mailTemplateListCallBack"/>
+			<include method="mailTemplateCallBack"/>
+			<include method="messageSendedMasterPageListCallBack"/>
+			<include method="messageSendedDetailListCallBack"/>
+			<include method="messageUserSendedPageListCallBack"/>
+			<include method="messageSendedStatisticListCallBack"/>
+			<include method="QAGroupListCallBack"/>
+			<include method="QAtutorListCallBack"/>
+			<include method="QASubjPageListCallBack"/>
+			<include method="QASubjRepositoryPageCallBack"/>
+			<include method="insertQASubjRepositoryCallBack"/>
+			<include method="deleteQASubjRepository"/>
+			<include method="QAtutorWriteListCallBack"/>
+			<include method="insertQATutorRepository"/>
+			<include method="deleteQATutorRepository"/>
+		</create>
+
+	    <create creator="new" javascript="StudyInfoWork">
+			<param name="class" value="com.sinc.lms.study.StudyInfoBaction"/>
+			<include method="studyInfoListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="StudyQnaBoardWork">
+			<param name="class" value="com.sinc.lms.study.StudyQnaBoardBaction"/>
+			<include method="studySeqQnaBoardPageListCallBack"/>
+			<include method="studyQnaBoardPageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="StudyFreeBoardWork">
+			<param name="class" value="com.sinc.lms.study.StudyFreeBoardBaction"/>
+			<include method="studyFreeBoardPageListCallBack"/>
+			<include method="studyFreeBoardCommentListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="StudyNoticeBoardWork">
+			<param name="class" value="com.sinc.lms.study.StudyNoticeBoardBaction"/>
+			<include method="studyNoticeBoardPageListCallBack"/>
+			<include method="studyNoticeBoardCommentListCallBack"/>
+			<include method="studyCommonNoticeBoardPageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="StudyBbsBoardWork">
+			<param name="class" value="com.sinc.lms.study.StudyBbsBoardBaction"/>
+			<include method="studyBbsBoardPageListCallBack"/>
+			<include method="studyBbsBoardPageListCallBack2"/>
+			<include method="studyBbsBoardCommentListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="FacilityWork">
+			<param name="class" value="com.sinc.lms.facility.FacilityBaction"/>
+			<include method="facilityListCallBack"/>
+			<include method="facilityAssignListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="DeliveryWork">
+			<param name="class" value="com.sinc.lms.delivery.DeliveryBaction"/>
+			<include method="deliveryListCallBack"/>
+			<include method="deliveryReadListCallBack"/>
+			<include method="deliveryBookManageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="StudyTotalStatusWork">
+			<param name="class" value="com.sinc.lms.study.StudyTotalStatusBaction"/>
+			<include method="studyTotalStatusListCallBack"/>
+			<include method="studyTotalStatusSubjectListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="CompleteStatusWork">
+			<param name="class" value="com.sinc.lms.complete.CompleteStatusBaction"/>
+			<include method="completeStatusListCallBack"/>
+			<include method="personalProposeListCallBack"/>
+			<include method="personalStudentListCallBack"/>
+			<include method="personalSubjectStudentList"/>
+			<include method="personalStoldListCallBack"/>
+			<include method="personalDelayListCallBack"/>
+			<include method="completeTargetListCallBack"/>
+			<include method="personalCounselHistoryListCallBack"/>
+			<include method="personalEncourageHistoryListCallBack"/>
+			<include method="completeCourseStatusListCallBack"/>
+			<include method="completeSubjectStatusListCallBack"/>
+			<include method="completeCourseCompStatusListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="InterationWork">
+			<param name="class" value="com.sinc.lms.complete.InterationBaction"/>
+			<include method="interationOnListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="StatisticWork">
+			<param name="class" value="com.sinc.lms.statistic.StatisticBaction"/>
+			<include method="statisticTutorListCallBack"/>
+			<include method="statisticStudyTotListCallBack"/>
+			<include method="statisticStudyDetailCallBack"/>
+			<include method="statisticHomeCountListCallBack"/>
+			<include method="statisticOverlappingIpCallBack"/>
+			<include method="statisticOverlappingIpPopupCallBack"/>
+			<include method="statisticEducationCompListCallBack"/>
+			<include method="statisticEducationResultCompListCallBack"/>
+			<include method="statisticEducationResultSubjListCallBack"/>
+			<include method="statisticEducationResultMonthListCallBack"/>
+			<include method="statisticEducationSubjListCallBack"/>
+			<include method="statisticEducationMonthListCallBack"/>
+			<include method="statisticEducationSubjDetailPopupCallBack"/>
+			<include method="statisticEducationManagementActivityListCallBack"/>
+			<include method="tutorActivityAnalisisListCallBack"/>
+			<include method="statisticTutorActivityListCallBack"/>
+			<include method="statisticEducationPlanPerfomanceListCallBack"/>
+			<include method="selectTechSkill"/>
+			<include method="statisticEducationPointSkillListCallBack"/>
+			<include method="selectStatisticEducationReportCallBack"/>
+			<include method="statisticTutorStatisfactListCallBack"/>
+			<include method="subjOperationStatusListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="SiteLinkWork">
+			<param name="class" value="com.sinc.lms.homepage.SiteLinkBaction"/>
+			<include method="siteLinkListCallBack"/>
+			<include method="siteLinkSortCallBack"/>
+			<include method="siteLinkDeleteCallBack"/>
+			<include method="siteLinkHiddenCallBack"/>
+		</create>
+
+		<create creator="new" javascript="SiteLinkFWork">
+			<param name="class" value="com.sinc.lms.homepage.SiteLinkFaction"/>
+			<include method="siteLinkDataCallBack"/>
+		</create>
+
+		<!--  EXAM -->
+		<create creator="new" javascript="ExamWork">
+			<param name="class" value="com.sinc.lms.exam.ExamBaction"/>
+			<include method="examQuestionListForm"/>
+			<include method="examQuestionListCallBack"/>
+			<include method="examMasterPageListCallBack"/>
+			<include method="examQuestionCountCallBack"/>
+			<include method="examPaperPageListCallBack"/>
+			<include method="examResultPageListCallBack"/>
+			<include method="selectExamPaperListCallBack"/>
+			<include method="examRemarkPageListCallBack"/>
+			<include method="examSettedQuestionListCallBack"/>
+			<include method="examTypeAddQuestionCallBack"/>
+			<include method="examResultMgrPageListCallBack"/>
+		</create>
+
+	    <create creator="new" javascript="CompWork">
+			<param name="class" value="com.sinc.lms.comp.CompBaction"/>
+			<include method="compPageListCallBack"/>
+			<include method="prefixCheckCallBack"/>
+			<include method="groupListCallBack"/>
+			<include method="businessPlcListCallBack"/>
+			<include method="compSubjMappingListCallBack"/>
+			<include method="compSubjMappedListCallBack"/>
+			<include method="externalSalesCompListCallBack"/>
+			<include method="externalSalesContentsListCallBack"/>
+		</create>
+
+	    <create creator="new" javascript="HomepageGroupWork">
+			<param name="class" value="com.sinc.lms.system.HomepageGroupBaction"/>
+			<include method="homepageGroupListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="OfflinetutorWork">
+			<param name="class" value="com.sinc.lms.tutor.OfflinetutorBaction"/>
+			<include method="offlinetutorListCallBack"/>
+			<include method="offlinetutorReplyListCallBack"/>
+			<include method="commAttListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="StudyStudentWork">
+			<param name="class" value="com.sinc.lms.unempinsurance.StudyStudentBaction"/>
+			<include method="studyStudentListCallBack"/>
+			<include method="studyStudentFinalListCallBack"/>
+		</create>
+		<create creator="new" javascript="CompleteReportWork">
+			<param name="class" value="com.sinc.lms.unempinsurance.CompleteReportBaction"/>
+			<include method="completeReportListCallBack"/>
+		</create>
+		<create creator="new" javascript="RefundManageWork">
+			<param name="class" value="com.sinc.lms.unempinsurance.RefundManageBaction"/>
+			<include method="refundManageListCallBack"/>
+		</create>
+		<create creator="new" javascript="SubjApprovalManageWork">
+			<param name="class" value="com.sinc.lms.unempinsurance.SubjApprovalManageBaction"/>
+			<include method="subjApprovalManageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="MyClassWork">
+			<param name="class" value="com.sinc.lms.study.MyClassFaction"/>
+			<include method="mainMenuWriteCallBack"/>
+			<include method="userSubjListCallBack"/>
+		</create>
+
+	    <create creator="new" javascript="ContentsFWork">
+			<param name="class" value="com.sinc.lms.contents.ContentsFaction"/>
+			<include method="cmiCompleteCallBack"/>
+			<include method="cmiBookmarkCallBack"/>
+			<include method="cmiDetailCallBack"/>
+			<include method="opinionWriteCallBack"/>
+			<include method="cmiCompleteYnCallBack"/>
+		</create>
+
+		<create creator="new" javascript="UccSubjWork">
+			<param name="class" value="com.sinc.lms.contents.UccSubjBaction"/>
+			<include method="uccSubjPageListCallBack"/>
+			<include method="uccEduTimeWriteCallBack"/>
+			<include method="uccEstimateynWriteCallBack"/>
+			<include method="uccSubjStudyPageListCallBack"/>
+		</create>
+
+		<create  creator="new" javascript="OperateSupportWork">
+			<param name="class" value="com.sinc.lms.support.OperateSupportBaction" />
+			<include method="addPenaltyPointManagementListCallBack" />
+		</create>
+
+		<create  creator="new" javascript="GraduateMeasureManagementWork">
+			<param name="class" value="com.sinc.lms.support.GraduateMeasureManagementBaction" />
+			<include method="graduateMeasureManagementListCallBack" />
+			<include method="graduateMeasureManagementConditionListCallBack" />
+		</create>
+
+		<create  creator="new" javascript="EducationScheduleWork">
+			<param name="class" value="com.sinc.lms.support.EducationScheduleBaction" />
+			<include method="educationScheduleListCallBack" />
+		</create>
+
+		<create  creator="new" javascript="EducationTrainingDailylogWork">
+			<param name="class" value="com.sinc.lms.support.EducationTrainingDailylogBaction" />
+			<include method="educationTrainingDailylogListCallBack" />
+			<include method="educationTrainingDailylogAttend" />
+			<include method="selectaddpoint" />
+		</create>
+
+		<create  creator="new" javascript="RightTestMenagementWork">
+			<param name="class" value="com.sinc.lms.rightTest.RightTestMenagementBaction" />
+			<include method="rightTestMenagementListCallBack" />
+			<include method="testCourseMenagementListCallBack" />
+			<include method="addCoursePopupCallBack" />
+			<include method="rightTestInningMenagementListCallBack" />
+			<include method="applicationAcceptMenagementListCallBack" />
+			<include method="applicationRefundMenagementListCallBack" />
+			<include method="internationalMakingMenagementListCallBack" />
+			<include method="internationalMakingMenagementListCallBack2" />
+			<include method="itpMakingMenagementListCallBack" />
+			<include method="itpMakingMenagementListCallBack2" />
+			<include method="foreignExchangeTestMenagemenListCallBack" />
+			<include method="foreignExchangeTestPassListCallBack" />
+			<include method="getRightTestSubj"/>
+			<include method="getRightTestSubjseqgr"/>
+			<include method="rightTestStatisticListCallBack"/>
+			<include method="foreignExchangeTestStatisticListCallBack"/>
+			<include method="rightTestGroupReceiptListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="MileageWork">
+			<param name="class" value="com.sinc.lms.support.MileageBaction"/>
+			<include method="mileageStandardListCallBack"/>
+			<include method="mileageListCallBack"/>
+			<include method="mileageSaveListCallBack"/>
+			<include method="mileageDeleteCall"/>
+		</create>
+
+		<create creator="new" javascript="EmployWork">
+			<param name="class" value="com.sinc.lms.support.EmployBaction"/>
+			<include method="employListCallBack"/>
+			<include method="employApplyListCallBack"/>
+			<include method="employUserListCallBack"/>
+			<include method="employCompOrLecturerListCallBack"/>
+			<include method="employLecturerListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="InternshipWork">
+			<param name="class" value="com.sinc.lms.support.InternshipBaction"/>
+			<include method="internshipListCallBack"/>
+			<include method="internshipNoticeListCallBack"/>
+			<include method="internshipUserListCallBack"/>
+			<include method="internshipApplyUserListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="LectureWork">
+			<param name="class" value="com.sinc.lms.lecture.LectureBaction"/>
+			<include method="lectureListCallBack"/>
+			<include method="lectureScheduleListCallBack"/>
+			<include method="lectureScheduleDelete"/>
+		</create>
+
+		<create creator="new" javascript="EBookWork">
+			<param name="class" value="com.sinc.lms.ebook.EBookBaction"/>
+			<include method="ebookListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ForeignCommentWork">
+			<param name="class" value="com.sinc.lms.support.ForeignCommentBaction"/>
+			<include method="selectForeignLangListCallBack"/>
+			<include method="selectForeignLangDetailListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="InternValuationWork">
+			<param name="class" value="com.sinc.lms.support.InternValuationBaction"/>
+			<include method="selectInternValuationListCallBack"/>
+			<include method="selectInternValuationDetailListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ContactReqWork">
+			<param name="class" value="com.sinc.lms.support.ContactReqBaction"/>
+			<include method="selectContactReqListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ContactReqFaction">
+			<param name="class" value="com.sinc.lms.support.ContactReqFaction"/>
+			<include method="insertContactReqDataCallBack"/>
+		</create>
+
+		<create creator="new" javascript="VolunteerWork">
+			<param name="class" value="com.sinc.lms.volunteer.VolunteerBaction"/>
+			<include method="volunteerPageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="ContentPageWork">
+			<param name="class" value="com.sinc.lms.contentPage.ContentPageBaction"/>
+			<include method="contentPageListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="AttendanceWork">
+			<param name="class" value="com.sinc.lms.attendance.AttendanceBaction"/>
+			<include method="attendancePageListCallBack"/>
+			<include method="attendanceBookListCallBack"/>
+			<include method="attendanceDateCountCallBack"/>
+			<include method="attendanceDatePageListCallBack"/>
+			<include method="attendanceUpdateDateListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="FtaWork">
+			<param name="class" value="com.sinc.lms.fta.FtaBaction"/>
+			<include method="ftaMovieListCallBack"/>
+		</create>
+
+		<create creator="new" javascript="FtaWork2">
+			<param name="class" value="com.sinc.lms.fta.FtaFaction"/>
+			<include method="ftaMovieAddPlayCount"/>
+			<include method="ftaMovieAddDownCount"/>
+		</create>
+
+		<create creator="new" javascript="ProposeFWork">
+			<param name="class" value="com.sinc.lms.propose.ProposeFaction"/>
+			<include method="inipaySetPriceCallBack"/>
+		</create>
+		
+		<create creator="new" javascript="ItabWork">
+			<param name="class" value="com.sinc.lms.homepage.ItabBaction"/>
+			<include method="itabContactListCallBack"/>
+			<include method="itabOpinionListCallBack"/>
+		</create>
+		
+		<create creator="new" javascript="ToeflWork">
+			<param name="class" value="com.sinc.lms.toefl.ToeflInfoBaction"/>
+			<include method="toeflPaymentListCallBack"/>
+			<include method="toeflRefundUpdate"/>
+		</create>
+
+	</allow>
+</dwr>

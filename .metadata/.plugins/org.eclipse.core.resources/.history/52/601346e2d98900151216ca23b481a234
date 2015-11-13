@@ -1,0 +1,8 @@
+ul {list-style: none; margin:0px; padding:0px;}
+.hidden{display:none;}
+
+#banner{margin-top:25px;margin-left: 642px; position:absolute; width:356px; height:348px; overflow:hidden;}
+#banner .img_list{position:absolute; top:0px; left:0px; z-index:200;}
+#banner .img_list li{float:left;}
+#banner .btn_list{position:absolute; bottom:14px; float:right; right:127px; z-index:300;}
+#banner .btn_list li{float:left; margin-right:7px;}
