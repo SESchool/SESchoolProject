@@ -1,16 +1,3 @@
-<%--
- * @(#)SystemCode Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * TC_CONTENTS 테이블 List Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 11. 06.  leehj       Initial Release
- ************************************************
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file = "/jsp/back/common/commonInc.jsp"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">

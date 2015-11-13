@@ -1,16 +1,3 @@
-<%--
- * @(#)login Template
- *
- * Copyright 2010 무역아카데미. All Rights Reserved.
- *
- * TZ_MEMBER 테이블 List Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 01. 30.  bgcho       Initial Release
- ************************************************
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="/tags/fm_taglib" prefix="fmtag" %>
 <%@ page import ="java.util.ArrayList"%>

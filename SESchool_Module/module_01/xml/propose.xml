@@ -7,7 +7,7 @@
 
 <sqlMap namespace="T_LMS_propose">
 
-	<!-- 부분수강 수강신청할 정보를 가져온다. -->
+	<!---->
 	<select id="selectProposeSelApplyInfo" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.selectProposeSelApplyInfo */
@@ -39,7 +39,7 @@
 		AND B.USERID = #p_userid#
 	</select>
 
-	<!-- GLMP 수강신청 폼 정보를 가져온다. -->
+	<!---->
 	<select id="selectProposeFormGLMP" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.selectProposeFormGLMP */
@@ -73,7 +73,7 @@
 		AND B.USERID = #p_userid#
 	</select>
 
-	<!-- 수강 및 결제 상태 정보를 가져온다. -->
+	<!---->
 	<select id="selectPropPayState" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.selectPropPayState */
@@ -105,7 +105,7 @@
 		</isEqual>
 	</select>
 
-	<!-- 무역협회회원사인지 여부를 가져온다. -->
+	<!---->
 	<select id="selectKitaMemberAuthCheck" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.selectKitaMemberAuthCheck */
@@ -144,7 +144,7 @@
 		AND I1.MEMBER_GBN = '1'
 	</select>
 
-	<!-- 분납결제시 결제 가능한 가장 작은 seq 를 가져온다. -->
+	<!---->
 	<select id="selectPayInstallmentSeqMin" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.selectPayInstallmentSeqMin */
@@ -154,8 +154,8 @@
 		AND TO_CHAR(SYSDATE,'YYYYMMDD') BETWEEN PAYSTART AND PAYEND
 	</select>
 
-	<!-- B2C 학습자 > 결재현황리스트 에서 지원신청리스트 + 수강신청 리스트 + 결제이력 리스트를 보여준다. -->
-	<!-- 환불 완료 상태 값 노출을 위해 recogstate != 'E' , recogstate = 'E' 나눠서 select 함. -->
+	<!---->
+	<!---->
 	<select id="selectProposePayStateList" resultClass="cmap" parameterClass="cmap">
         /* propose.selectProposePayStateList */
         SELECT
@@ -346,7 +346,7 @@
         ORDER BY APPDATE DESC
 	</select>
 
-	<!-- 분납결제과정의 결제정보를 가져온다. -->
+	<!---->
 	<select id="selectProposePayInstallList" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.selectProposePayInstallList */
@@ -392,7 +392,7 @@
 		ORDER BY A.SEQ
 	</select>
 
-	<!-- 과정에 속한 과목 리스트(교재정보포함)를 가져온다. -->
+	<!---->
 	<select id="selectProposeSubjectList" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.selectProposeSubjectList */
@@ -413,7 +413,7 @@
 		</isNotEmpty>
 	</select>
 
-	<!-- 교재선택 리스트를 가져온다. -->
+	<!---->
 	<select id="selectSelSubjBook" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.selectSelSubjBook */
@@ -433,7 +433,7 @@
 	</select>
 	
 
-	<!-- 단체 수강신청 시, 수강생정보가 이미 존재하는지 확인  -->
+	<!---->
 	<select id="checkProposeStudent" resultClass="cmap" parameterClass="cmap">
 		SELECT 
 			COUNT(STUDENT_SEQ) STUDENT
@@ -445,7 +445,7 @@
 	 	   AND SUBJSEQ = #p_subjseq#
 	</select>	
 	
-	<!-- 단체 수강신청 시 필요한 seq 얻기 -->
+	<!---->
 	<select id="readProposeStudentSEQ" resultClass="cmap" parameterClass="cmap">
 		SELECT 
 			COUNT(STUDENT_SEQ) SEQ
@@ -453,7 +453,7 @@
 	  		T_LMS_PROPOSESTUDENT 
 	</select>
 	
-	<!-- 단체 수강신청 시, 수강생 정보 추가 -->
+	<!---->
 	<insert id="insertProposeStudent" parameterClass="cmap">
 		INSERT INTO T_LMS_PROPOSESTUDENT 
 	       (
@@ -483,7 +483,7 @@
 	       )	
 	</insert>
 	
-	<!-- 단체 수강신청 승인상태 업데이트 -->
+	<!---->
 	<update id="updateProposeStudent" parameterClass="cmap">
 		UPDATE T_LMS_PROPOSESTUDENT
 		SET
@@ -494,7 +494,7 @@
 			AND SUBJSEQ = #p_subjseq#	
 	</update>
 	
-	<!-- 단체 수강신청시 입력했던 수강생 정보 삭제	 -->
+	<!---->
 	<delete id="deleteProposeStudent" parameterClass="cmap">
 		DELETE FROM T_LMS_PROPOSESTUDENT
 		WHERE 1=1
@@ -504,7 +504,7 @@
 			AND RECOGSTATE = 'N'
 	</delete>
 	
-	<!-- 단체 수강생정보 조회 -->
+	<!---->
 	<select id="selectProposeStudent" resultClass="cmap" parameterClass="cmap">
 		SELECT 
 			STUDENT_SEQ
@@ -525,14 +525,14 @@
 	       AND RECOGSTATE = #p_recogstate#
 	</select>
 		
-	<!-- 단체 수강생 수강신청 삭제 -->
+	<!---->
 	<delete id="deleteProposeBL" parameterClass="cmap">
 		DELETE FROM T_LMS_PROPOSE 
 		WHERE USERID = #p_userid#
 	</delete>
 			
 		
-	<!-- 학습자 수강신청 폼 -->
+	<!---->
 	<select id="selectProposeApplyInfo" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.selectProposeApplyInfo */
@@ -684,7 +684,7 @@
 		AND I.MEMBER_ID = #p_userid#
 	</select>
 
-	<!-- 수강관리 > 수강신청관리 > 페이지 리스트 -->
+	<!---->
 	<select id="selectApplyPageList" resultClass="cmap"
 		parameterClass="cmap">
 		<include refid="pageingTop" />
@@ -735,7 +735,7 @@
 		<include refid="pageingBottom" />
 	</select>
 
-	<!-- 수강관리 > 수강신청현황 > 페이지 리스트 -->
+	<!---->
 	<select id="selectApplyStatusPageList" resultClass="cmap"
 		parameterClass="cmap">
 		<include refid="pageingTop" />
@@ -779,7 +779,7 @@
 		<include refid="pageingBottom" />
 	</select>
 
-	<!-- 수강관리 > 수강신청현황 > 리스트 -->
+	<!---->
 	<select id="selectApplyStatusList" resultClass="cmap"
 		parameterClass="cmap">
 	    <![CDATA[ /* propose.selectApplyStatusList */
@@ -821,7 +821,7 @@
 		</isNotEmpty>
 	</select>
 
-	<!-- 수강관리 > 수강신청관리 > 리스트 -->
+	<!---->
 	<select id="selectApplyList" resultClass="cmap" parameterClass="cmap">
         <![CDATA[ /* propose.selectApplyList */
         SELECT E.SUBJ, E.YEAR, E.SUBJSEQ, F.SUBJNM
@@ -880,7 +880,7 @@
 		</isNotEmpty>
 	</select>
 
-	<!-- 수강관리 > 수강신청관리 > 리스트 -->
+	<!---->
 	<select id="selectApplyExcelList" resultClass="cmap"
 		parameterClass="cmap">
 		<include refid="pageingTop" />
@@ -942,7 +942,7 @@
 		<include refid="pageingBottom" />
 	</select>
 
-	<!-- 수강관리 > 부분 수강신청관리 > 페이지 리스트 -->
+	<!---->
 	<select id="selectOpenApplyPageList" resultClass="cmap"
 		parameterClass="cmap">
 		<include refid="pageingTop" />
@@ -990,7 +990,7 @@
 		<include refid="pageingBottom" />
 	</select>
 
-	<!-- 수강관리 > 부분 수강신청관리 > 리스트 -->
+	<!---->
 	<select id="selectOpenApplyList" resultClass="cmap"
 		parameterClass="cmap">
 	    <![CDATA[ /* propose.selectOpenApplyList */
@@ -1133,7 +1133,7 @@
         ORDER BY SUBJORDER  ]]>
 	</select>
 
-	 <!-- 만약 교육이 시작되었더라도 결제 완료가 되지 않았다면(이러닝의 경우) 4차 개발 개강 후 취소 가능 기능 1074번째 줄 -->
+	 <!---->
 	<select id="selectProposeUserPreB2C" resultClass="cmap"
 		parameterClass="cmap">
 	    <![CDATA[ /* propose.selectProposeUserPreB2C */
@@ -1674,7 +1674,7 @@
 
 	</select>
 
-	<!-- 과정운영 > 입과관리 > 리스트 -->
+	<!---->
 	<select id="selectStudentManagerPageList" resultClass="cmap"
 		parameterClass="cmap">
 		<include refid="pageingTop" />
@@ -1809,7 +1809,7 @@
 		</isNotEmpty> <isNotEmpty property="p_appstatus"> AND B.CHKFINAL = #p_appstatus# 
 		</isNotEmpty> ORDER BY A.GRCODE, A.GRSEQ, A.SUBJ, A.EDUSTART </select -->
 
-	<!-- 과정운영 > 입과관리 > 엑셀다운 -->
+	<!---->
 	<select id="selectStudentManagerExcel" resultClass="cmap"
 		parameterClass="cmap">
 	    <![CDATA[ /* propose.selectStudentManagerExcel */
@@ -1886,7 +1886,7 @@
 		</isNotEmpty>
 	</select>
 
-	<!-- 결제후 수강신청 정보 업데이트 -->
+	<!---->
 	<update id="updateProposePay" parameterClass="cmap">
 		/* propose.updateProposePay */
 		UPDATE T_LMS_PROPOSE
@@ -1908,7 +1908,7 @@
 		AND USERID = #p_userid#
 	</update>
 
-	<!-- 결제후 분납결제 과정의 수강신청 정보 업데이트 -->
+	<!---->
 	<update id="updateProposePayInstall" parameterClass="cmap">
 		/* propose.updateProposePayInstall */
 		UPDATE T_LMS_PROPOSEPAYINSTALL
@@ -1919,7 +1919,7 @@
 		USERID = #p_userid# AND INSTALLMENT_SEQ = #p_installment_seq#
 	</update>
 
-	<!-- 배송정보 업데이트 -->
+	<!---->
 	<update id="updateSend" parameterClass="cmap">
 		/* propose.updateSend */
 		UPDATE T_LMS_SEND
@@ -1936,7 +1936,7 @@
 		USERID = #p_userid#
 	</update>
 
-	<!-- 수강신청서에서 사용자의 핸드폰 번호, 이메일이 없을 경우 입력 받아서 업데이트 한다. -->
+	<!---->
 	<update id="updateMemberInfo2" parameterClass="cmap">
 		/* propose.updateMemberInfo2 */
 		UPDATE T_LMS_MEMBER
@@ -2027,7 +2027,7 @@
 		AND A.USERID = #p_userid#
 	</select>
 
-	<!-- 해당 수강에 포함된 BL 과정 목록을 가져온다. -->
+	<!---->
 	<select id="selectProposeSubBL" resultClass="cmap"
 		parameterClass="cmap">
 		SELECT B.SUBJ, B.YEAR, B.SUBJSEQ, A.USERID, A.LDATE
@@ -2380,7 +2380,7 @@
 		<include refid="pageingBottom" />
 	</select>
 
-	<!-- 수강대상자선정 리스트 -->
+	<!---->
 	<select id="selectStudentTargetPageList" resultClass="cmap"
 		parameterClass="cmap">
 		<include refid="pageingTop" />
@@ -2591,7 +2591,7 @@
 		, #p_price# )
 	</insert>
 
-	<!-- 결제 현황에서 변경 버튼을 누를경우 삭제한다 -->
+	<!---->
 	<delete id="deleteProposePayInstallWhenEditPayment"
 		parameterClass="cmap">
 		<![CDATA[  /* propose.deleteProposePayInstallWhenEditPayment */
@@ -2668,7 +2668,7 @@
 	</delete>
 
 
-	<!-- 분납결제과정의 수강신청 정보 삭제 -->
+	<!---->
 	<delete id="deleteProposePayInstall" parameterClass="cmap">
 		/* propose.deleteProposePayInstall */
 		DELETE T_LMS_PROPOSEPAYINSTALL
@@ -2699,7 +2699,7 @@
 		]]>
 	</insert>
 
-	<!-- 선정내역에서 대상자를 삭제한다. -->
+	<!---->
 	<insert id="deleteTargetUser" parameterClass="cmap">
 		<![CDATA[
 			DELETE FROM T_LMS_TARGETUSER
@@ -2838,7 +2838,7 @@
 		]]>
 	</select>
 
-	<!-- ICP/CDP 해당 기업의 년간 교육계획 -->
+	<!---->
 	<select id="selectYearPlanUser" resultClass="cmap"
 		parameterClass="cmap">
 	    <![CDATA[
@@ -2872,7 +2872,7 @@
 		]]>
 	</select>
 
-	<!-- 일반기업 년간 교육계획 -->
+	<!---->
 	<select id="selectYearPlanUser2" resultClass="cmap"
 		parameterClass="cmap">
 	    <![CDATA[
@@ -3222,7 +3222,7 @@
 		</isNotEmpty>
 	</select>
 
-	<!-- 자격시험 결제시 PRICE 정보를 가져온다. -->
+	<!---->
 	<select id="getRightTestApplyInfo" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.getRightTestApplyInfo 자격시험 결제시 PRICE 정보를 가져온다 */
@@ -3235,7 +3235,7 @@
 		AND SEQ = #p_seq#
 	</select>
 
-	<!-- 해당과정과 과정에 속한 과목들의 과정 년도 차수를 가지고 온다. -->
+	<!---->
 	<select id="getSubjRelateList" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.getSubjRelateList */
@@ -3246,7 +3246,7 @@
 		WHERE SUBJ=#p_subj# AND YEAR=#p_year# AND SUBJSEQ=#p_subjseq#
 	</select>
 
-	<!-- 수강신청 정보의 결제 seq, recogstate 값 구하기 -->
+	<!---->
 	<select id="getProposeSeqState" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.getProposeSeqState */
@@ -3261,7 +3261,7 @@
 		AND A.USERID = #p_userid#
 	</select>
 
-	<!-- 단기연수 수강취소 및 환불관련 규정 동의 업데이트 -->
+	<!---->
 	<update id="proposeWriteRefundAgreeUpdate" parameterClass="cmap">
 		/* propose.proposeWriteRefundAgreeUpdate */
 		MERGE INTO T_LMS_PROPOSE_DAMO X
@@ -3280,7 +3280,7 @@
 		SET X.REFUNDAGREEYN = Y.REFUNDAGREEYN
 	</update>
 
-	<!-- 수강신청 알림 설정을 가져온다. -->
+	<!---->
 	<select id="selectProposeSmsNotiInfo" resultClass="cmap"
 		parameterClass="cmap">
 		/* propose.selectProposeSmsNotiInfo */
@@ -3297,7 +3297,7 @@
 	</select>
 
 
-	<!-- 과정의 기수별 수강신청 유무 체크 -->
+	<!---->
 	<select id="selectCheckSubjseq" resultClass="java.lang.Integer"
 		parameterClass="cmap">
 		/* propose.selectCheckSubjseq */
@@ -3308,7 +3308,7 @@
 		AND SUBJSEQ = #p_subjseq#
 		AND USERID = #p_userid#
 	</select>
-	<!-- 과정의 기수 개설 유무 확인 -->
+	<!---->
 	<select id="selectCheckOpenSubjseq" resultClass="java.lang.Integer"
 		parameterClass="cmap">
 		/* propose.selectCheckOpenSubjseq */
@@ -3321,7 +3321,7 @@
 
 	
 	
-	<!-- 무역마스터 학생인지 체크 -->
+	<!---->
 	<select id="checkMasterStudentResult" parameterClass="cmap" resultClass="cmap">
 		<![CDATA[
 			SELECT 
@@ -3337,7 +3337,7 @@
 		]]>
 	</select>
 
-	<!-- 자격시험연수과정(외환관리사 실무과정) 수강신청시 설문조사 추가 -->
+	<!---->
 	<insert id="insertRightPropSulmun" parameterClass="cmap">
 		/* propose.insertRightPropSulmun */
 		INSERT INTO T_LMS_RIGHTPROPSULMUN 

@@ -1,16 +1,3 @@
-<%--
- * @(#)Sample Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * TC_ 테이블 List Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 11. 21.  bgcho       Initial Release
- ************************************************
---%>
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -34,10 +21,10 @@
 	String v_saleamt1 = boxProposeApplyInfo.getString("SALEAMT1");
 	String v_saleamt2 = boxProposeApplyInfo.getString("SALEAMT2");
 	
-	String v_personcost = boxProposeApplyInfo.getString("PERSONCOST");	// 개인수강지원금 YN
-	String v_commcost = boxProposeApplyInfo.getString("COMMCOST");		// 능력개발카드 환급 YM
-	String v_goyongcost = boxProposeApplyInfo.getString("GOYONGCOST");	// 고용보험환급 YN
-	String v_cardcost = boxProposeApplyInfo.getString("CARDCOST");		// 일반 YN
+	String v_personcost = boxProposeApplyInfo.getString("PERSONCOST");	
+	String v_commcost = boxProposeApplyInfo.getString("COMMCOST");		
+	String v_goyongcost = boxProposeApplyInfo.getString("GOYONGCOST");	
+	String v_cardcost = boxProposeApplyInfo.getString("CARDCOST");		
 	
 	String v_resno1 = (boxProposeApplyInfo.getString("RESNO").length() >= 6) ? boxProposeApplyInfo.getString("RESNO").substring(0,6) : "";
 	String v_resno2 = (boxProposeApplyInfo.getString("RESNO").length() >= 13) ? boxProposeApplyInfo.getString("RESNO").substring(6,13) : "";
@@ -46,12 +33,12 @@
 	String[] arrCompPhone = boxProposeApplyInfo.getString("COMTEL").split("-");
 	String[] arrHandPhone = boxProposeApplyInfo.getString("HANDPHONE").split("-");
 	
-	String  v_mileage = box.getStringDefault("p_mileage", "0");    // 적립된 마일리지
+	String  v_mileage = box.getStringDefault("p_mileage", "0");    
 	DecimalFormat df = new DecimalFormat("#,###,##0");
 	String v_mileage2 = df.format(Double.parseDouble(v_mileage));
 
 	String  v_ismileage = boxProposeApplyInfo.getString("ISMILEAGE");
-	String  v_represent = boxProposeApplyInfo.getString("REPRESENT");	// 대표아이디 여부 : Y or N, Y: 일반신청&단체신청 라디오버튼 생성
+	String  v_represent = boxProposeApplyInfo.getString("REPRESENT");	
 	System.out.println("REPRESENT : "+v_represent);
 	
 	HashMap <String, String> sp_param = new HashMap <String, String>();
@@ -143,16 +130,9 @@
 		
 	}
 
-	/**
-	 1001 - PERSONCOST - 멤버
-	 1002 - COMMCOST 개인수강금
-	 1003 - GOYONGCOST 고용보험
-	 1004 - CARDCOST 일반
-	*/
+
 	function proposeWrite(v_costsupport) {
-		/**
-		*
-		*/
+	
 		
 		var form = document.form1;
 		var changePropose = "";
@@ -182,7 +162,6 @@
 				alert('단체신청은 일반과정으로만 수강신청 하실 수 있습니다.'); 
 				return;
 			}
-			// p_studentName
 			if(!(pattern_kor.test(document.getElementById('p_studentName').value))){
 				alert('이름은 한글로 입력해주세요.');
 				document.getElementById('p_studentName').focus();
@@ -193,7 +172,6 @@
     			document.getElementById('p_studentName').focus();
     			return;
     		}
-    		// p_studentBirthDay
     		if(document.getElementById('p_studentBirthDay').value.length < 6){
     			alert('생년월일은 6자리 숫자로 입력해주세요.\n ex) 881004');
     			document.getElementById('p_studentBirthDay').focus();
@@ -214,13 +192,11 @@
     			document.getElementById('p_studentBirthDay').focus();
     			return;
     		}
-    		// p_studentEmail
     		if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.getElementById('p_studentEmail').value))){
     			alert('e-mail은 형식에 맞게 입력하여 주세요.\n ex) kitamember@kita.net');
     			document.getElementById('p_studentEmail').focus();
     			return;
     		}
-    		// p_studentPhone1
     		if(isNaN(document.getElementById('p_studentPhone1').value)){
     			alert('휴대폰 번호는 숫자만 입력해주세요.\n ex) 010');
     			document.getElementById('p_studentPhone1').focus();
@@ -231,7 +207,6 @@
 				document.getElementById('p_studentPhone1').focus();
 				return;
 			}
-    		// p_studentPhone2
     		if(isNaN(document.getElementById('p_studentPhone2').value)){
     			alert('휴대폰 번호는 숫자만 입력해주세요.\n ex) 1234');
     			document.getElementById('p_studentPhone2').focus();
@@ -242,7 +217,6 @@
 				document.getElementById('p_studentPhone2').focus();
 				return;
 			}
-    		// p_studentPhone3
     		if(isNaN(document.getElementById('p_studentPhone3').value)){
     			alert('휴대폰 번호는 숫자만 입력해주세요.\n ex) 5678');
     			document.getElementById('p_studentPhone3').focus();
@@ -255,7 +229,6 @@
 			}
 			
 			for(var i=0; i < size_student; i++){
-				// p_studentName
 				if(!(pattern_kor.test(form.p_studentName[i].value))){
 					alert('이름은 한글로 입력해주세요.');
 	    			form.p_studentName[i].focus();
@@ -266,7 +239,6 @@
 	    			form.p_studentName[i].focus();
 	    			return;
 	    		}
-	    		// p_studentBirthDay	    		
 	    		if(form.p_studentBirthDay[i].value.length < 6){
 	    			alert('생년월일은 6자리 숫자로 입력해주세요.\n ex) 881004');
 	    			form.p_studentBirthDay[i].focus();
@@ -288,13 +260,11 @@
 	    			return;
 	    		}
 	    		
-	    		// p_studentEmail
 	    		if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(form.p_studentEmail[i].value))){
 	    			alert('e-mail은 형식에 맞게 입력하여 주세요.\n ex) kitamember@kita.net');
 	    			form.p_studentEmail[i].focus();
 	    			return;
 	    		}
-	    		// p_studentPhone1
 	    		if(isNaN(form.p_studentPhone1[i].value)){
 	    			alert('휴대폰 번호는 숫자만 입력해주세요.\n ex) 010');
 	    			form.p_studentPhone1[i].focus();
@@ -305,7 +275,6 @@
 					form.p_studentPhone1[i].focus();
 					return;
 				}
-	    		// p_studentPhone2
 	    		if(isNaN(form.p_studentPhone2[i].value)){
 	    			alert('휴대폰 번호는 숫자만 입력해주세요.\n ex) 1234');
 	    			form.p_studentPhone2[i].focus();
@@ -316,7 +285,6 @@
 					form.p_studentPhone2[i].focus();
 					return;
 				}
-	    		// p_studentPhone3
 	    		if(isNaN(form.p_studentPhone3[i].value)){
 	    			alert('휴대폰 번호는 숫자만 입력해주세요.\n ex) 5678');
 	    			form.p_studentPhone3[i].focus();
@@ -327,7 +295,7 @@
 					form.p_studentPhone3[i].focus();
 					return;
 				}
-			}// for
+			}
 			
 			if(typeof size_student == "undefined"){
 				size_student = 1;
@@ -452,7 +420,6 @@
 			}
 		}
 		
-		//교재 선택여부 확인
 		for ( i=1; i <= 12; i++ ) {
 			if($("p_bookmonth" + i)) {
 				if($("p_bookmonth" + i).value == "") {
@@ -640,10 +607,10 @@
 		var form = document.form1;
 		
 		$("p_rcvraddr").setValue(addr);
-		if(zipcode.search('-') > -1){	// 기존의 지번주소
+		if(zipcode.search('-') > -1){	
 			$("p_rcvrzipcode1").setValue(zipcode.substr(0, 3));
 			$("p_rcvrzipcode2").setValue(zipcode.substr(4, 7));
-		} else {						// 새로운 우편주소
+		} else {						
 			$("p_rcvrzipcode1").setValue(zipcode);
 			$("p_rcvrzipcode2").setValue("");
 			form.p_rcvrzipcode2.style.display="none";
@@ -657,10 +624,10 @@
 		var form = document.form1;
 		
 		$("p_addr1").setValue(addr);
-		if(zipcode.search('-') > -1){	// 기존의 지번주소
+		if(zipcode.search('-') > -1){	
 			$("p_zipcode1").setValue(zipcode.substr(0, 3));
 			$("p_zipcode2").setValue(zipcode.substr(4, 7));
-		} else {						// 새로운 우편주소
+		} else {						
 			$("p_zipcode1").setValue(zipcode);
 			$("p_zipcode2").setValue("");
 			form.p_zipcode2.style.display="none";
@@ -732,13 +699,12 @@
 		var _ajax = new Ajax.Request (
 				url
 				, { method:'post'
-					//, parameters:Form.serialize('form2')		
-					, parameters: jQuery("#form2").serialize()	//익스플로러10에 적용안되서 jQuery 이용하여 수정 - 20130515
+					, parameters: jQuery("#form2").serialize()	
 					, onSuccess: function(contents) {
 						var ret = contents.responseText.substr(0,1);
 						if ( ret == "Y" ) {
 							f.p_regchkyn.value = "Y";
-							var rets = contents.responseText.split('||'); //회원사 이름 기입하기 - 2015.08.04 by 안성현
+							var rets = contents.responseText.split('||'); 
 							document.getElementById("p_compnm").value = rets[1];
 							document.getElementById("p_compnm").disabled='disabled';
 							alert ( "무역협회 회원사로 확인 되었습니다.\n직장/학교 란에 '"+rets[1]+"' 이(가) 기입됩니다.");
@@ -887,15 +853,12 @@
 		</tr>
 		<tr>
 			<td height="100%" valign="top" align="center" style="padding:20px;">
-				<!-- 수강신청서 -->
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td>
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
 						<tr>
 							<td><img src="/images/common/popup_lecture_label01.gif"></td>
-							<!-- v_subj != "4230", 과목코드 랭귀지큐브는 단체신청 x -->
-							<!-- v_represent.equals("Y"), 대표아이디인 경우 -->
 						<% if( Integer.parseInt(v_subj) != 4230 && v_represent.equals("Y") ){ %>	
 							<td align="right">
 								<input type="radio" style="border:none;" name="changePropose" value="0" onclick ="changeProposeType(0);" checked="checked"/>일반신청&nbsp;
@@ -1000,7 +963,6 @@
 				<tr><td height="1" bgcolor="#c7c7c7"></td></tr>
 				</table>
 					
-				<!-- 단체신청 시, 수강생 입력 폼 -->
 				<div id="div_addStudent" style="display:none">
 					<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:20px;">
 					<tr>
@@ -1035,9 +997,6 @@
 							</tr>
 							<tr><td height="1" colspan="4" bgcolor="#c7c7c7"></td></tr>
 							<tr><td height="10"></td></tr>
-							<!--
-								수강생 입력 폼
-							 -->
 							<tr>
 								<td align="center" width="5%">
 									<input name="p_studentName" id="p_studentName" type="text" dispName="이름" isNull="N" maxLength="4" value="" style="width:70px;text-align:center" placeholder="xxx" />
@@ -1061,7 +1020,6 @@
 					</table>
 				</div>	
 				
-				<!-- 단기 연수일 경우 설문조사  -->
 				<% if( boxProposeApplyInfo.getString("TRAININGCLASS").equals("01") ){ %>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:20px;">
 				<tr>
@@ -1159,90 +1117,6 @@
 				<% } %>
 				
 				
-				<!--// 배송지 정보 -->
-			<%-- <% if ( v_isdelivery.equals("Y") ) { %>
-				<!-- 배송상품 및 배송지 정보확인 -->
-				<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:20px;">
-				<tr>
-					<td>
-						<table width="100%" border="0" cellpadding="0" cellspacing="0">
-						<tr>
-							<td><img src="/images/common/popup_lecture_label02.gif"></td>
-							<td align="right">
-								<input type="radio" name="addr_type" value="H" style="border:none;" checked onClick="changeAddr()"> 집주소
-								<input type="radio" name="addr_type" value="C" style="border:none;" onClick="changeAddr()"> 회사주소
-								<input type="radio" name="addr_type" value="N" style="border:none;" onClick="changeAddr()"> 새로입력
-							</td>
-						</tr>
-						</table>
-					</td>
-				</tr>
-				<tr><td height="3"></td></tr>
-				<tr><td height="2" bgcolor="#c7c7c7"></td></tr>
-				<tr>
-					<td style="padding-top:10px; padding-bottom:5px;">
-						<table width="100%" border="0" cellpadding="0" cellspacing="0">
-						<colgroup>
-							<col width="15" />
-							<col width="80" />
-							<col width="" />
-						</colgroup>
-						<tr valign="top" height="26">
-							<td align="center" style="padding-top:5px;"><img src="/images/common/bullet_dot_cyan.gif"></td>
-							<td style="padding-top:4px;"><img src="/images/common/txt_product_name.gif"></td>
-							<td><%=boxProposeApplyInfo.getString("NAME")%></td>
-						</tr>
-						<tr valign="top" height="26">
-							<td align="center" style="padding-top:5px;"><img src="/images/common/bullet_dot_cyan.gif"></td>
-							<td style="padding-top:4px;"><img src="/images/common/txt_delivery_address.gif"></td>
-							<td>
-								<input type="text" name="p_rcvrzipcode1" id="p_rcvrzipcode1" value="<%=boxProposeApplyInfo.getString("POST1") %>" style="width:60px;" readonly>
-								-
-								<input type="text" name="p_rcvrzipcode2" id="p_rcvrzipcode2"  value="<%=boxProposeApplyInfo.getString("POST2") %>" style="width:60px;" readonly>
-								<a href="#none" onclick="searchZipCode()"><img src="/images/common/btn_popup_search_2.gif" alt="우편번호찾기"/></a>
-							</td>
-						</tr>
-						<tr valign="top" height="26">
-							<td align="center" style="padding-top:5px;"></td>
-							<td style="padding-top:4px;"></td>
-							<td>
-								<input type="text" name="p_rcvraddr" id="p_rcvraddr"  value="<%=boxProposeApplyInfo.getString("ADDR")+ " " +boxProposeApplyInfo.getString("ADDR2") %>" style="width:360px;">
-							</td>
-						</tr>
-						<tr valign="top" height="26">
-							<td align="center" style="padding-top:5px;"><img src="/images/common/bullet_dot_cyan.gif"></td>
-							<td style="padding-top:4px;"><img src="/images/common/txt_email.gif"></td>
-							<td>
-								<input type="text" name="p_rcvemail" value="<%=boxProposeApplyInfo.getString("EMAIL") %>" style="width:360px;">
-							</td>
-						</tr>
-						<tr valign="top" height="26">
-							<td align="center" style="padding-top:5px;"><img src="/images/common/bullet_dot_cyan.gif"></td>
-							<td style="padding-top:4px;"><img src="/images/common/txt_phone.gif"></td>
-							<td>
-								<input name="p_rcvrtel1" type="text" size="4" dataType="integer" dispName="연락처" isNull="Y" lenCheck="4" maxLength="4" value="<%=(arrPhone.length>=2)?arrPhone[0]:"" %>" style="width:40px;" onkeyup="checkIsDigit(this);"/> -
-								<input name="p_rcvrtel2" type="text" size="4" dataType="integer" dispName="연락처" isNull="Y" lenCheck="4" maxLength="4" value="<%=(arrPhone.length>=2)?arrPhone[1]:"" %>" style="width:60px;" onkeyup="checkIsDigit(this);"/> -
-								<input name="p_rcvrtel3" type="text" size="4" dataType="integer" dispName="연락처" isNull="Y" lenCheck="4" maxLength="4" value="<%=(arrPhone.length>=3)?arrPhone[2]:"" %>" style="width:60px;" onkeyup="checkIsDigit(this);"/>
-							</td>
-						</tr>
-						<tr valign="top" height="26">
-							<td align="center" style="padding-top:5px;"><img src="/images/common/bullet_dot_cyan.gif"></td>
-							<td style="padding-top:4px;"><img src="/images/common/txt_mobile.gif"></td>
-							<td>
-								<input name="p_rcvrmobile1" type="text" size="4" dataType="integer" dispName="핸드폰" isNull="Y" lenCheck="4" maxLength="4" value="<%=(arrHandPhone.length>=2)?arrHandPhone[0]:"" %>" style="width:40px;" onkeyup="checkIsDigit(this);"/> -
-								<input name="p_rcvrmobile2" type="text" size="4" dataType="integer" dispName="핸드폰" isNull="Y" lenCheck="4" maxLength="4" value="<%=(arrHandPhone.length>=2)?arrHandPhone[1]:"" %>" style="width:60px;" onkeyup="checkIsDigit(this);"/> -
-								<input name="p_rcvrmobile3" type="text" size="4" dataType="integer" dispName="핸드폰" isNull="Y" lenCheck="4" maxLength="4" value="<%=(arrHandPhone.length>=3)?arrHandPhone[2]:"" %>" style="width:60px;" onkeyup="checkIsDigit(this);"/>
-							</td>
-						</tr>
-						</table>
-					</td>
-				</tr>
-				<tr><td height="1" bgcolor="#c7c7c7"></td></tr>
-				</table>
-			<%	} %> --%> 
-			<!--// 배송지 정보 -->
-				
-				<!-- 교육비정보 -->
 				<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:20px;">
 				<tr>
 					<td>
@@ -1311,7 +1185,6 @@
 						</table>
 					</td>
 				</tr>
-				<!--  마일리지  시작  -->
 			<%  
 				// v_ismileage = "Y";
 				if(v_ismileage.equals("Y")) { 
@@ -1369,7 +1242,6 @@
 						</table>
 					</td>
 				</tr>
-				<!--  마일리지 종료  -->
 				
 				<tr>
 					<td style="padding-top:10px; padding-bottom:10px;">
@@ -1451,10 +1323,8 @@
 						</table>
 					</td>
 				</tr>
-				<!-- <tr><td height="1" bgcolor="#c7c7c7"></td></tr> -->
 				</table>
 		<%	if ( !blIsITmaster && !boxProposeApplyInfo.getString("ISONOFF").equals("OFF") ) { %>
-				<!-- 교재신청정보 -->
 				<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:20px;">
 				<tr>
 					<td>
@@ -1679,8 +1549,6 @@ function changeProposeType(number){
 	}
 }
 
-//회원사 : 98
-//일반 : 99
 function changeCostSupport(obj) {
 	var f = document.form1;
 	var v_trainingclass = f.p_trainingclass.value;
@@ -1689,7 +1557,6 @@ function changeCostSupport(obj) {
 	var objPrice = document.getElementById("spanPrice");
 	var objLastPrice = document.getElementById("LastPrice");
 	var goyongYN = "<%=v_goyongcost%>";
-	//goyongYN = "N";
 	changeKitaMember(v_pricetype);
 	var v_totprice = 0;
 	var v_bookprice = 0;
@@ -1712,12 +1579,6 @@ function changeCostSupport(obj) {
 			disableGoYongBtn();
 			alert ( "이러닝과정은 특별할인 적용 시 고용보험환급을 받으실 수 없습니다." );
 		}
-	}/* else if ( v_pricetype == "일반" && goyongYN == "Y" ) {
-		enableGoYongBtn();
-	} else if ( v_pricetype != "일반" && v_trainingclass == "09" && goyongYN == "Y" ) {
-		disableGoYongBtn();
-		alert ( "이러닝과정은 특별할인 적용 시 고용보험환급을 받으실 수 없습니다." );
-	}*/
 	
 
 	v_totprice = doPriceCalc();
@@ -1732,7 +1593,6 @@ function changeCostSupport(obj) {
 	f.p_usemileage.value = 0; 
 }
 
-//수강생 입력폼 추가
 function addTableRow( v_type ) {
 
 	var table_student = "";
@@ -1783,14 +1643,12 @@ function addTableRow( v_type ) {
 		newCell3.width = "23%";
 		newCell4.width = "32%";
 		
-		// 결제금액 증액
 		v_totprice = doPriceCalc();
 		objPrice.innerHTML = commify(v_totprice)+" 원";
 		checkMilage();
 	} 
 }
 
-//수강생 입력폼 삭제
 function delTableRow( v_type ) {
 
 	var table_student = "";
@@ -1810,7 +1668,6 @@ function delTableRow( v_type ) {
 	if( rowIdx > 3 ) {
 		table_student.deleteRow(rowIdx);
 		
-		// 결제금액 감액		
 		v_totprice = doPriceCalc();
 		objPrice.innerHTML = commify(v_totprice)+" 원";
 		checkMilage();
@@ -1839,7 +1696,6 @@ function updatePrice(obj) {
 	checkMilage();
 }
 
-//교재비 계산
 function doBookPriceCalc() {
 	var objBookAppYn = document.getElementsByName("p_bookappyn");
 	var bookprice = 0;
@@ -1875,7 +1731,6 @@ function doBookPriceCalc() {
 	return bookprice;
 }
 
-// 교육비 계산
 function doPriceCalc() {
 	var f = document.form1;
 	var v_pricetype = $RF("form1", "p_pricetype");
@@ -1904,7 +1759,6 @@ function doPriceCalc() {
 		}
 	}
 	
-	// 회원사
 	if ( v_pricetype == "98" ) {
 		if( changePropose == 1 && quantity > 0 ){
 			f.p_memberbiyong.value = parseInt(<%=boxProposeApplyInfo.getString("MEMBERBIYONG") %>) * quantity;
@@ -1913,7 +1767,6 @@ function doPriceCalc() {
 		}
 		v_totprice = f.p_memberbiyong.value;
 	} 
-	// 일반
 	else if ( v_pricetype == "99" ) {
 		if( changePropose == 1 && quantity > 0 ){
 			f.p_biyong.value = parseInt(<%=boxProposeApplyInfo.getString("BIYONG") %>) * quantity;
@@ -1922,7 +1775,6 @@ function doPriceCalc() {
 		}
 		v_totprice = f.p_biyong.value;
 	} 
-	// 특별
 	else {
 		objSpecialPrice = eval("f.p_special_"+v_pricetype);
 	<%	for(int i=0; i < sp_param.size(); i++){	%>
@@ -1947,10 +1799,6 @@ function doPriceCalc() {
 }
 
 function checkMilage(){
-	// 금액이 천원단위인지 확인한다. 
-	// 차감할 마일리지 금액이 교육비보다 크면 교육비 만큼만 
-	// 최종 결제 금액 변경하기.
-	// 교재구매 가격도 포함		
 	
 	var f = document.form1;
 	var v_usemileage = parseInt(f.p_usemileage.value) ;
@@ -1971,16 +1819,6 @@ function checkMilage(){
 		objLastPrice.innerHTML = commify(v_totprice + v_bookprice)+" 원";
 		return;
 	}
-	/*
-	var v_tmp = parseInt(v_usemileage /1000) * 1000;
-
-	if(v_usemileage != v_tmp ) {
-		alert("사용할 마일리지 입력 시 1,000 M 단위로만 가능합니다.");
-		f.p_usemileage.value = 0; 
-		objLastPrice.innerHTML = commify(doPriceCalc() )+" 원";
-		return;
-	}
-	*/
 	
 	if((v_totprice - v_usemileage) < 0) {
 		alert("마일리지 사용은 총 교육 금액을 초과할 수 없습니다.");

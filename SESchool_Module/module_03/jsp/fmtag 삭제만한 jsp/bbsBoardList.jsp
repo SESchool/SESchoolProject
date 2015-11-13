@@ -1,16 +1,3 @@
-<%--
- * @(#)SystemCode Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * T_LMS_CBOARDCONTENTS 테이블 List Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2009. 12. 14.  bgcho
- ************************************************
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import ="com.sinc.framework.data.DataSet"%>
 <%@ page import ="com.sinc.framework.data.Box"%>

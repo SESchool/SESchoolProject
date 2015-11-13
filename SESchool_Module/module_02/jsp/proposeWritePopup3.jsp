@@ -1,16 +1,3 @@
-<%--
- * @(#)Sample Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * TC_ 테이블 List Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 11. 21.  bgcho       Initial Release
- ************************************************
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file = "/jsp/front/common/commonInc.jsp" %>
 <%

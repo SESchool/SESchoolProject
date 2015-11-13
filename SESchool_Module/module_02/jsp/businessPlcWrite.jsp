@@ -1,16 +1,3 @@
-<%--
- * @(#)SystemCode Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * T_LMS_COMP 테이블 List Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2009. 10. 23.  leehj       Initial Release
- ************************************************
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file = "/jsp/back/common/commonInc.jsp"%>
 

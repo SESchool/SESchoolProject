@@ -1,16 +1,3 @@
-<%--
- * @(#)Sample Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * T_LMS_STUDENT 테이블 List Template.
- *
- ************************************************ㄷ
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 11. 21.  bgcho       Initial Release
- ************************************************
---%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@page import="com.sinc.common.FormatDate" %>
@@ -198,21 +185,16 @@
 	String v_edustart = "";
 	String v_eduend = "";
 	String v_isgoyong = "";
-	String v_trainingarea = ""; /* 추가_2013.12.10 */
+	String v_trainingarea = "";
 	String interviewpassyn = "";
-	String v_outsourcingtype = "";	//포팅:01 / 링크:그외
-	String v_studentindate = "";	//입과된날(환불기준적용시에 사용)
-	/* 추가_2015.09.10 */
-	String v_represent = "";		// 대표 id
+	String v_outsourcingtype = "";
+	String v_studentindate = "";	
+	String v_represent = "";		
 	
 	int num = 0;
-	// 환불신청기간 지정 변수 (환불가능기간 = 수업이 시작된 날 + 변수일)
-	//int shortTraining = 10; 	// 단기연수
-	int eLearning = 7;			// e러닝 (2013.10.18 수강시작일로 부터 7일이내 이후 환불불가)
-	//int itEduCenter= 10;		// IT교육센터
-	//int businessForeign = 10;	// 비지니스외국어
+	int eLearning = 7;			
 	
-	int classDays = 0;			// 수업일수 (수업기간의 1/3같은걸 할때 사용)
+	int classDays = 0;		
 	
 	while ( list != null && list.next() ) {
 		
@@ -240,15 +222,13 @@
 		v_edustart = list.getString("EDUSTART");
 		v_eduend = list.getString("EDUEND");
 		v_isgoyong = list.getString("ISGOYONG");
-		v_trainingarea = list.getString("TRAININGAREA");  /* 추가_2013.12.10 */
-		v_outsourcingtype  = list.getString("OUTSOURCINGTYPE");	//01:포팅
-		v_studentindate = list.getString("STINDATE");	//입과된날
+		v_trainingarea = list.getString("TRAININGAREA");  
+		v_outsourcingtype  = list.getString("OUTSOURCINGTYPE");
+		v_studentindate = list.getString("STINDATE");	
 		v_represent = list.getString("REPRESENT");
 		
 		
-		// 대표id의 경우, 입금완료 or 입금대기 밑에 수강생정보를 확인할 수 있는 버튼 추가.
 		if ( !v_represent.equals("") && v_recogstate.equals("Y") ) {
-			// 수강생 정보확인하는 버튼추가
 			v_recogstatenm = "완료<br/><a href=\"#none\" onclick=\"showStudentInfo('"+v_represent+"','"+v_subj+"','"+v_subjseq+"','"+v_recogstate+"');\"><img src=\"/images/template0/common/btn_mycampus_student.gif\"></a>";
 		} else if ( !v_represent.equals("") && v_recogstate.equals("N") ){
 			v_recogstatenm = "입금대기<br/><a href=\"#none\" onclick=\"showStudentInfo('"+v_represent+"','"+v_subj+"','"+v_subjseq+"','"+v_recogstate+"');\"><img src=\"/images/template0/common/btn_mycampus_student.gif\"></a>";
@@ -258,19 +238,17 @@
 			v_paymethodnm = "개인수강금";
 		}
 		
-		if ( v_paymethod.equals("010000000000") || v_paymethod.equals("02") ) {	// 가상계좌
+		if ( v_paymethod.equals("010000000000") || v_paymethod.equals("02") ) {
 			v_paymethodnm = "가상계좌<br/><a href=\"#none\" onclick=\"showAccountInfo('"+v_paymethod+"','"+list.getString("TID")+"');\"><img src=\"/images/template0/common/btn_mycampus_view.gif\"></a>";
-		} else if ( v_paymethod.equals("001000000000") || v_paymethod.equals("03") ) {	// 무통장
+		} else if ( v_paymethod.equals("001000000000") || v_paymethod.equals("03") ) {	
 			v_paymethodnm = "무통장<br/><a href=\"#none\" onclick=\"showAccountInfo('"+v_paymethod+"','"+list.getString("TID")+"');\"><img src=\"/images/template0/common/btn_mycampus_view.gif\"></a>";
 		}
 		
 		if ( v_paydayyn.equals("Y") ) {
-			// 결제내역이 없거나, 결제상태가 취소(C),  결제실패(F) 이면 결제 가능   ( 환불완료(E) 제외) 
 			payable = (v_recogstate.equals("")||v_recogstate.equals("C")|| v_recogstate.equals("F")) ? "Y" : "N";
 		} else {
 			payable = "N";
 		}
-		//payable = "Y";
 		
 		if ( v_paperpassyn.equals("Y") ) 		v_paperpassyn = "합격";
 		else if ( v_paperpassyn.equals("N") ) 	v_paperpassyn = "불합격";
@@ -283,7 +261,6 @@
 		if ( v_isinstallment.equals("Y") ) {
 			HashMap param = list.getCurMap();
 			payInstalList = (DataSet)param.get("payInstalList");
-			//if ( payInstalList != null || payInstalList.getRow() > 0 ) {
 				rowspan = " rowspan='"+payInstalList.getRow()+"'";
 			//}
 			
@@ -297,7 +274,6 @@
 				v_paystate = v_recogstatenm;
 					
 				if ( v_paydayyn.equals("Y") ) {
-					// 결제내역이 없거나, 결제상태가 취소, 환불완료, 결제실패 이면 결제 가능
 					payable = (v_recogstate.equals("")||v_recogstate.equals("C")||v_recogstate.equals("E")||v_recogstate.equals("F")) ? "Y" : "N";
 				} else {
 					payable = "N";
@@ -324,12 +300,10 @@
 		<td><%=payInstalList.getString("PAYAMT") %></td>
 		<td>
 			<% 
-			if(payable.equals("Y") && interviewpassyn.equals("Y")){ 	// 장기과정 합격자인지 확인
+			if(payable.equals("Y") && interviewpassyn.equals("Y")){ 
 					%><a href="#none" onclick="javascript:proposeWriteForm('<%=v_subj %>','<%=v_year%>','<%=v_subjseq%>','<%=v_installment_seq%>','<%=v_proposeyn%>','<%=v_isoptsubjectselect%>','<%=v_trainingarea%>');"><img src="/images/template0/common/btn_mycampus_approve.gif"></a><%
-			} else if(payable.equals("N") && interviewpassyn.equals("Y") && !v_recogstate.equals("Y") ){ 		// 결제 불가능하고 장기과정 합격자면서 결제 완료가 아닐경우
-					/* 현재 결제기간인지 확인  */
+			} else if(payable.equals("N") && interviewpassyn.equals("Y") && !v_recogstate.equals("Y") ){ 	
 					if(v_paydayyn.equals("Y")){
-					/* 무역마스터(03), IT마스터(04),섬유수출 전문가(12, 16), 중국마케팅 전문가(13)인 경우만 */ 
 						if(v_trainingclass.equals("03") || v_trainingclass.equals("04") || v_trainingclass.equals("12") || v_trainingclass.equals("13")|| v_trainingclass.equals("16"))	
 						{%>
 							<%=v_recogstatenm%><br><a href="#none" onclick="paymentChange('<%=v_subj %>','<%=v_year%>','<%=v_subjseq%>','<%=v_installment_seq%>','<%=v_proposeyn%>','<%=v_isoptsubjectselect%>','<%=v_tid%>');"><img src="/images/template0/common/btn_mycampus_payment_change.gif"></a>
@@ -346,7 +320,6 @@
 			}
 			%>
 		</td>
-		<!-- 장기과정의 경우  환불신청 버튼이 활성화 되지 않도록 수정 - 무역실무연수실 요청 (2013.2.21) -->
 		<td><!-- <%=(v_recogstate.equals("Y")&&v_isgraduated.equals("")&&!v_seq.equals(""))?"<a href=\"#none\" onclick=\"javascript:refundRequestWriteForm('"+v_subj+"','"+v_year+"','"+v_subjseq+"','"+v_seq+"','"+v_installment_seq+"')\"><img src=\"/images/common/btn_request01.gif\"></a>":"" %> --></td>
 	</tr>
 <%			}
@@ -362,12 +335,10 @@
 		<td><%=StringUtil.nvl(list.getString("AMOUNT"),list.getString("PRICE")) %></td>
 		<td>
 			<% 
-				if(payable.equals("Y") && v_chkfinal.equals("Y")){ 	// 장기과정 합격자인지 확인
+				if(payable.equals("Y") && v_chkfinal.equals("Y")){
 					%><a href="#none" onclick="javascript:proposeWriteForm('<%=v_subj %>','<%=v_year%>','<%=v_subjseq%>','<%=v_installment_seq%>','<%=v_proposeyn%>','<%=v_isoptsubjectselect%>');"><img src="/images/template0/common/btn_mycampus_approve.gif"></a><%
-				} else if(payable.equals("N") && interviewpassyn.equals("Y") && !v_recogstate.equals("Y") ){ 		// 결제 불가능하고 장기과정 합격자면서 결제 완료가 아닐경우
-					/* 현재 결제기간인지 확인 & 결제 완료상태가 아닌지 확인 */
+				} else if(payable.equals("N") && interviewpassyn.equals("Y") && !v_recogstate.equals("Y") ){ 
 					if(v_paydayyn.equals("Y") && !(v_recogstate.equals("Y"))){
-					/* 무역마스터(03), IT마스터(04),섬유수출 전문가(12, 16), 중국마케팅 전문가(13), 지부장기과정(15)인 경우만 */ 
 						if(v_trainingclass.equals("03") || v_trainingclass.equals("04") || v_trainingclass.equals("12") || v_trainingclass.equals("16") || v_trainingclass.equals("13") || (v_trainingclass.equals("15")&&v_isonoff.equals("LONG")))	
 						{%>
 							<%=v_recogstatenm%><br><a href="#none" onclick="paymentChange('<%=v_subj %>','<%=v_year%>','<%=v_subjseq%>','<%=v_installment_seq%>','<%=v_proposeyn%>','<%=v_isoptsubjectselect%>','<%=v_tid%>');"><img src="/images/template0/common/btn_mycampus_payment_change.gif"></a>
@@ -385,11 +356,10 @@
 			%><br>
 		</td>
 		<% String refunddate = list.getString("REFUNDEND"); %>
-		<% if ("".equals(refunddate)) { /* 환불을 하지 않았다면 */ %>
+		<% if ("".equals(refunddate)) {  %>
 		<% 
 			int compareDate = 0;
 		
-			// 현재 날짜를 구한다.
 			java.util.Calendar gc = new GregorianCalendar();
 			SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
 			Date d = gc.getTime();
@@ -399,57 +369,45 @@
 	
 			Date curDate = dateFormatter.parse(str);
 			Date eduDate;
-			if(v_edustart.equals("")){	// 개강날짜 정보가 없을 경우 예외 처리
+			if(v_edustart.equals("")){	
 				eduDate = dateFormatter.parse(str);
 			} else {
 			
-				/* 환불기간 => e러닝: 7일!! 
-				T_LMS_STUDENT 테이블에 INDATE 컬럼추가 > 
-				수강생등록일(입과일, INDATE)이 교육시작일 이전일경우 교육시작일로부터 7일 
-				수강생등록일(입과일, INDATE)이 교육시작일 이후일경우 수강생들록일 이후부터 7일 */
 				if(v_studentindate.equals("")){
-					v_studentindate = fdt.getRelativeDate(fdt.getDate("yyyyMMdd"), -365 );	//입과일이 없으면(null) 환불버튼 안나오게 입과일을 임시로 1년전으로지정
-					//System.out.println(v_studentindate);
+					v_studentindate = fdt.getRelativeDate(fdt.getDate("yyyyMMdd"), -365 );	
 				}
-				if(Integer.parseInt(v_studentindate)>=Integer.parseInt(v_edustart)){	//교육시작일보다 입과일이 늦으면 입과일로부터 7일간환불가능
+				if(Integer.parseInt(v_studentindate)>=Integer.parseInt(v_edustart)){	
 					eduDate = dateFormatter.parse(v_studentindate);
-				}else{	//교육시작일보다 입과일이 빠를경우 교육시작일로부터 7일간 환불가능
+				}else{	
 					eduDate = dateFormatter.parse(v_edustart);
 				}
 			}
-			// 수업 시작일로 부터 현재까지 몇일이 지났는지 계산
 			compareDate = (int)((eduDate.getTime()-curDate.getTime())/(1000*60*60*24));
 			compareDate *= -1;
 			
-			// 수업 일수를 구한다(정확하게는 수업 일수가 아니라 수업 기간)
-			if(v_eduend.equals("")){	// 수업종료 날짜 정보가 없을 경우 예외 처리
+			if(v_eduend.equals("")){	
 				System.out.println("수업 종료일이 공백");
-				classDays = 2; // 수업 종료일이 없으면 수업일수를 0으로 만들어 환불버튼이 활성화 되지 않도록 한다.
+				classDays = 2; 
 			} else {
 				Date eduEnd = dateFormatter.parse(v_eduend);
 				classDays = (int)((eduEnd.getTime()-eduDate.getTime())/(1000*60*60*24))+1;
 			}
 		%>
 			<%
-				if (v_trainingclass.equals("01")  || (v_trainingclass.equals("15")&&v_isonoff.equals("OFF")) ||v_trainingclass.equals("05") ){				// 단기연수일 경우%>
+				if (v_trainingclass.equals("01")  || (v_trainingclass.equals("15")&&v_isonoff.equals("OFF")) ||v_trainingclass.equals("05") ){				%>
 					<%-- <% if(shortTraining >= compareDate) {%> --%>
 						<td><%=(v_recogstate.equals("Y")&&v_isgraduated.equals("")&&!v_seq.equals(""))?"<a href=\"#none\" onclick=\"javascript:refundRequestWriteForm('"+v_subj+"','"+v_year+"','"+v_subjseq+"','"+v_seq+"','')\"><img src=\"/images/common/btn_request01.gif\"></a>":"" %></td>
 					<%-- <%}%> --%>
-				<%} else if (v_trainingclass.equals("09")  || (v_trainingclass.equals("15")&&v_isonoff.equals("ON")) ) {	// e러닝일 경우%> 
-					<% if(v_isgoyong.equals("Y")) {	// 환급과정일 경우  // 수업시작일로부터 현재까지의 기간이 총수업일수의 1/2보다 작을경우 환불가능%>
+				<%} else if (v_trainingclass.equals("09")  || (v_trainingclass.equals("15")&&v_isonoff.equals("ON")) ) {	%> 
+					<% if(v_isgoyong.equals("Y")) {%>
 						<% if((classDays/2) >= compareDate) {%>
 							<td><%=(v_recogstate.equals("Y")&&v_isgraduated.equals("")&&!v_seq.equals(""))?"<a href=\"#none\" onclick=\"javascript:refundRequestWriteForm('"+v_subj+"','"+v_year+"','"+v_subjseq+"','"+v_seq+"','')\"><img src=\"/images/common/btn_request01.gif\"></a>":"" %></td>
 						<%} else {%>
 							<td></td>
 						<%} %>
-					<%} else {	// 비환급과정일 경우 %>
+					<%} else { %>
 					
 					
-							<!-- 환불기간 => e러닝: 7일!! 
-								T_LMS_STUDENT 테이블에 INDATE 컬럼추가 > 
-								수강생등록일(입과일, INDATE)이 교육시작일 이전일경우 교육시작일로부터 7일 
-								수강생등록일(입과일, INDATE)이 교육시작일 이후일경우 수강생들록일 이후부터 7일  
-							-->					
 							<%if(eLearning >= compareDate){	%>
 							<td><%=(v_recogstate.equals("Y")&&v_isgraduated.equals("")&&!v_seq.equals(""))?"<a href=\"#none\" onclick=\"javascript:refundRequestWriteForm('"+v_subj+"','"+v_year+"','"+v_subjseq+"','"+v_seq+"','')\"><img src=\"/images/common/btn_request01.gif\"></a>":"" %></td>
 							<%} else { %>
@@ -457,18 +415,18 @@
 							<%} %>
 						 
 					<%} %>
-				<%} else if (v_trainingclass.equals("10")) {	// IT교육센터일 경우%>
+				<%} else if (v_trainingclass.equals("10")) {	%>
 					<%-- <% if(itEduCenter >= compareDate) {%> --%>
 						<td><%=(v_recogstate.equals("Y")&&v_isgraduated.equals("")&&!v_seq.equals(""))?"<a href=\"#none\" onclick=\"javascript:refundRequestWriteForm('"+v_subj+"','"+v_year+"','"+v_subjseq+"','"+v_seq+"','')\"><img src=\"/images/common/btn_request01.gif\"></a>":"" %></td>
 					<%-- <%}%> --%>
-				<%} else if (v_trainingclass.equals("14")) {	// 비지니스 외국어(itab)일 경우(아직 trainingclass에 등록되지 않음)%>
+				<%} else if (v_trainingclass.equals("14")) {	%>
 					<%-- <% if(businessForeign >= compareDate) {%> --%>
 						<td><%=(v_recogstate.equals("Y")&&v_isgraduated.equals("")&&!v_seq.equals(""))?"<a href=\"#none\" onclick=\"javascript:refundRequestWriteForm('"+v_subj+"','"+v_year+"','"+v_subjseq+"','"+v_seq+"','')\"><img src=\"/images/common/btn_request01.gif\"></a>":"" %></td>
 					<%-- <%}%> --%>
 				<%} else {%>
 					<td></td>
 				<%} %>
-		<% } else {	/* 환불을 했다면 */
+		<% } else {	
 			SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHH");
 			Date now = new Date();	
 			Date refundTime = null;
@@ -487,4 +445,3 @@
 </form>
 </body>
 </html>
-<!-- //Footer -->

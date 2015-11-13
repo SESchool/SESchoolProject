@@ -1,4 +1,4 @@
-<%@page import="com.sinc.lms.contents.OpenSubjAttBaction"%>
+<%@page import="com.sinc.lms.contents.OpenSubjAttBaction"%>  
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ include file="/jsp/front/common/commonBasicInc.jsp"%>
 <link rel="stylesheet" href="/css/style_v3.css" />

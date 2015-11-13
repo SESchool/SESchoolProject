@@ -1,16 +1,3 @@
-<%--
- * @(#)ClassifySubject Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * T_LMS_SUBJ 테이블 List Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 11. 11.  bluedove       Initial Release
- ************************************************
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ include file = "/jsp/back/common/commonInc.jsp"%>
 <%@ page import ="java.util.StringTokenizer"%>

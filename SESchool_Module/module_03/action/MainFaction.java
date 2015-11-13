@@ -1,20 +1,3 @@
-/**
- * @(#)MainFaction
- *
- * Copyright 2009 신세계아이엔씨. All Rights Reserved.
- *
- * 메인페이지 Action 클래스.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2009. 02. 09.  bluedove       Initial Release
- ************************************************
- *
- * @author      bluedove
- * @version     1.0
- * @since       2009. 02. 09.
- */
 
 package com.sinc.lms.main;
 

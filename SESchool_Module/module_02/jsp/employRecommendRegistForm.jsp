@@ -1,16 +1,3 @@
-<%--
- * @(#)Sample Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2009. 12. 09.  jangcw       Initial Release
- ************************************************
---%>
 <%@page import="com.sinc.common.FileDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" 		%>
 <%@ include file = "/jsp/front/common/commonBasicInc.jsp"%>

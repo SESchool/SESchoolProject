@@ -1,16 +1,3 @@
-<%--
- * @(#)educationSubjectList.jsp
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * 나의정보수정 폼
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2009. 01. 20.  bluedove       Initial Release
- ************************************************
---%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="com.sinc.framework.data.DataSet"%>
 <%@ page import="com.sinc.common.FormatDate"%>

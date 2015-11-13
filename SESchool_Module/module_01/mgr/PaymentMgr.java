@@ -1,20 +1,3 @@
-/**
- * @(#)TbCateMgr
- *
- * Copyright 2006 mediopia. All Rights Reserved.
- *
- * T_LMS_DIC, T_LMS_DICGROUP 테이블 Mgr 클래스.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 12. 16.  leehj       Initial Release
- ************************************************
- *
- * @author      leehj
- * @version     1.0
- * @since       2010. 12. 16.
- */
 
 package com.sinc.lms.propose;
 

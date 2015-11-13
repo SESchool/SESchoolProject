@@ -1,20 +1,3 @@
-/**
- * @(#)TutroBaction
- *
- * Copyright 2010 무역아카데미 All Rights Reserved.
- *
- * T_LMS_BILLPUBLISH 테이블 관리자 Action 클래스.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 10. 25.  hjkim       Initial Release
- ************************************************
- *
- * @author      hjkim
- * @version     1.0
- * @since       2010. 10. 25.
- */
 
 package com.sinc.lms.billpublish;
 

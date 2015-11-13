@@ -1,20 +1,3 @@
-/**
- * @(#)MyContentsMgr
- *
- * Copyright 2010 fmwave. All Rights Reserved.
- *
- * T_LMS_MANAGER 테이블 Mgr 클래스.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 10. 28.  fmwave       Initial Release
- ************************************************
- *
- * @author      bluedove
- * @version     1.0
- * @since       2010. 10. 28.
- */
 
 package com.sinc.cms.contents;
 

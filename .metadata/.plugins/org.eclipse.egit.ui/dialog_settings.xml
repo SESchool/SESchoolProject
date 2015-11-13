@@ -2,9 +2,11 @@
 <section name="Workbench">
 	<item value="true" key="CommitDialog.showUntracked"/>
 	<list key="CommitDialog.authorValues">
+		<item value="SESchool &lt;junghoon_shim@softengineer.school&gt;"/>
 		<item value="SESchool &lt;junghoon@softengineer.school&gt;"/>
 	</list>
 	<list key="CommitDialog.committerValues">
+		<item value="SESchool &lt;junghoon_shim@softengineer.school&gt;"/>
 		<item value="SESchool &lt;junghoon@softengineer.school&gt;"/>
 	</list>
 	<section name="org.eclipse.egit.ui.COMMIT_DIALOG_SECTION">
@@ -12,7 +14,7 @@
 		<item value="1|.Helvetica Neue DeskInterface|11.0|0|COCOA|1|.HelveticaNeueDeskInterface-Regular" key="DIALOG_FONT_NAME"/>
 		<item value="623" key="DIALOG_HEIGHT"/>
 		<item value="199" key="DIALOG_X_ORIGIN"/>
-		<item value="-9" key="DIALOG_Y_ORIGIN"/>
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="GitCommitMessageComponent">
 	</section>

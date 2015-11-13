@@ -7,7 +7,7 @@
 
 <sqlMap namespace="T_LMS_payment">
     
-	<!-- 결제모듈(이니페이) 설정 정보를 가져온다. -->
+	<!---->
     <select id="getInipayInfo" resultClass="cmap" parameterClass="cmap">
         /* payment.getInipayInfo */
         SELECT A.INIPAYHOME, A.TYPE, A.ENCTYPE, A.CHECKOPT
@@ -23,7 +23,7 @@
             AND B.TRAININGCLASS = #p_trainingclass#
 	</select>
 	
-	<!-- 추가_2013.12.02_결제모듈(이니페이) 설정 정보를 가져온다_지부연수 -->
+	<!---->
 	<select id="getInipayInfoJiboo" resultClass="cmap" parameterClass="cmap">
 		/* payment.getInipayInfoJiboo */ 
 	       SELECT A.INIPAYHOME, 
@@ -47,13 +47,13 @@
 		       WHERE c.gubun=(SELECT codenm FROM T_LMS_CODE WHERE gubun='0101' AND code=15) AND B.TRAININGCLASS = 15 AND c.CODE=#p_trainingarea#  /*지역코드*/
 	</select>
 	
-	<!-- IC.N 결제 대상 과정 정보를 가져온다. -->
+	<!---->
     <select id="getIcnPayInfo" resultClass="String" parameterClass="String">
         /* payment.getIcnPayInfo */
         SELECT PAYYN FROM T_LMS_ICNPAYSUBJ WHERE SUBJ = #subj#
 	</select>
 	
-	<!-- 가상계좌 정보를 가져온다. -->
+	<!---->
     <select id="selectVBankInfo" resultClass="cmap" parameterClass="cmap">
         /* payment.selectVBankInfo */
         SELECT  A.ISLICENSE, A.SEQ, A.TID, A.MOID
@@ -79,7 +79,7 @@
 	</select>
 	
 	
-	<!--  결제정보 리스트를 가져온다.  -->
+	<!---->
 	<select id="selectPaymentPageList" resultClass="cmap" parameterClass="cmap">
 	    <include refid="pageingTop" />
 	    	<![CDATA[
@@ -245,7 +245,7 @@
 		<include refid="pageingBottom" />	
 	</select>
 
-	<!--  과정기수 결제정보 리스트를 가져온다.  -->
+	<!---->
 	<select id="selectPaymentCoursePageList" resultClass="cmap" parameterClass="cmap">
 		<include refid="pageingTop" />
 	    <![CDATA[
@@ -328,7 +328,7 @@
 		<include refid="pageingBottom" />	
 	</select>
 		
-	<!--  환불 정보 리스트를 가져온다. -->
+	<!---->
 	<select id="selectRefundPageList" resultClass="cmap" parameterClass="cmap">
 	    <include refid="pageingTop" />
 	    	<![CDATA[
@@ -469,7 +469,7 @@
 		  ]]>																							
 	</select>
 	
-	<!--   결제 상태값 가져오기  -->
+	<!---->
 	<select id="getPaymentRecogstate" resultClass="string" parameterClass="cmap" >
 	    	<![CDATA[
 				SELECT RECOGSTATE FROM T_LMS_PAYMENT 
@@ -477,7 +477,7 @@
 		  ]]>																							
 	</select>
 		
-	<!--  KAMIS 적용을 위한 과정 결제 정보 가져온다. -->
+	<!---->
 	<select id="getPaymentApplyInfo" resultClass="cmap" parameterClass="cmap" >
 	    	<![CDATA[
 	    	select A.SEQ, #p_atlc_aplt_key# ATLC_APLT_KEY , A.YEAR
@@ -500,7 +500,7 @@
 				AND A.SEQ = #p_seq#		
 		  ]]>																							
 	</select>
-	<!--  KAMIS 적용을 위한  자격시험 결제 정보 가져온다. -->
+	<!---->
 	<select id="getPaymentTestApplyInfo" resultClass="cmap" parameterClass="cmap" >
 	    	<![CDATA[
 	    	select A.SEQ, #p_atlc_aplt_key# ATLC_APLT_KEY , SUBSTR( B.TESTSTARTDT,0,4) YEAR
@@ -521,7 +521,7 @@
 		  ]]>																							
 	</select>
 	
-	<!--  KAMIS 과정 환불 적용을 위한 정보 가져온다. -->
+	<!---->
 	<select id="getRepayApplyInfo" resultClass="cmap" parameterClass="cmap" >
 	    	<![CDATA[
 	    	select A.SEQ STLM_KEY, #p_atlc_aplt_key# ATLC_APLT_KEY, A.SEQ RFNM_KEY, A.YEAR
@@ -541,7 +541,7 @@
 		  ]]>																							
 	</select>
 	
-	<!--  KAMIS 자격시험  환불 적용을 위한 정보 가져온다. -->
+	<!---->
 	<select id="getRepayTestApplyInfo" resultClass="cmap" parameterClass="cmap" >
 	    	<![CDATA[
 	    	select A.SEQ STLM_KEY , A.SEQ RFNM_KEY, #p_atlc_aplt_key# ATLC_APLT_KEY, SUBSTR( B.TESTSTARTDT, 0,4 ) YEAR
@@ -560,7 +560,7 @@
 		  ]]>																							
 	</select>	
 			
-	<!--  KAMIS  과정 결제 전표처리 상태값 변경한다.  -->		
+	<!---->		
 	<update id="updatePaymentPaperState" parameterClass="cmap"  >
 		<![CDATA[
 			UPDATE T_LMS_PAYMENT 
@@ -571,7 +571,7 @@
 		]]>
 	</update>
 
-	<!--  KAMIS 과정 환불 전표처리 상태값 변경한다.  -->		
+	<!---->		
 	<update id="updateRepayPaperState" parameterClass="cmap"  >
 		<![CDATA[
 			UPDATE T_LMS_PAYMENT 
@@ -636,7 +636,7 @@
             AND P.SEQ = #p_seq#  ]]>
 		
 	</select>	
-	<!--  결제정보 (카미스 사용) -->
+	<!---->
 	<select id="selectPaymentUseKamisDetail" resultClass="cmap" parameterClass="cmap" >
 	    	<![CDATA[
 	    		/* payment.selectPaymentUseKamisDetail */
@@ -686,7 +686,7 @@
 				    AND P.SEQ=#p_seq#
 		  ]]>																								
 	</select>
-	<!--  결제 정보 (자격시험) -->
+	<!---->
 	<select id="selectExamPaymentDetail" resultClass="cmap" parameterClass="cmap" >
 	    	<![CDATA[
 				SELECT	P.RIGHTNO, P.INNINGSEQ, P.APPLYNUM, P.SEQ, P.USERID, P.RECOGSTATE
@@ -711,7 +711,7 @@
 		  ]]>																								
 	</select>
 	
-	<!--  결제 정보 (자격시험) 카미스 사용 -->
+	<!---->
 	<select id="selectExamPaymentUseKamisDetail" resultClass="cmap" parameterClass="cmap" >
 	    	<![CDATA[
 				SELECT	P.RIGHTNO, P.INNINGSEQ, P.APPLYNUM, P.SEQ, P.USERID, P.RECOGSTATE
@@ -742,7 +742,7 @@
 		  ]]>																							
 	</select>	
 	
-	<!-- 1. 결제테이블의  마지막 순번을 가져온다. .-->
+	<!---->
 	<select id="selectPaymentSeq" resultClass="string" parameterClass="cmap">
 		<![CDATA[ 
 				SELECT NVL(MAX(SEQ), 1) + 1 SEQ 
@@ -793,7 +793,7 @@
 		]]>
 	</update>
 	
-	<!-- 결제 메모  select -->
+	<!---->
 	<select id="selectPaymentMemo" resultClass="cmap" parameterClass="cmap" >
 	    	<![CDATA[
 				SELECT	P.USERID, P.SUBJ, P.YEAR, P.SUBJSEQ 
@@ -821,7 +821,7 @@
 		]]>
 	</update>
 	
-	<!--   랭귀지큐브 결제자의 메모에 url요청의 결과값을 기록해놓는다.  2015.06.03 by 안성현 -->
+	<!---->
 	<update id="updateLangQMemo" parameterClass="cmap" >
 	    /* payment.updateLangQMemo */
 	    	<![CDATA[
@@ -834,13 +834,13 @@
 		  ]]>																							
 	</update>
 	
-	<!--   랭귀지큐브 결제자의 정보를 가져온다.(랭큐측에 보내주기 위해서)  2015.06.03 by 안성현 -->
+	<!---->
 	<select id="getUserInfoLangQ" resultClass="cmap" parameterClass="cmap" >
 	    /* payment.getUserInfoLangQ */
 	    	SELECT handphone,name FROM T_LMS_MEMBER WHERE userid=#p_userid#																			
 	</select>
 	
-	<!--   랭귀지큐브 결제자의 정보를 가져온다2 (랭큐측에 보내주기 위해서)  2015.06.10 by 안성현 -->
+	<!---->
 	<select id="getUserInfoLangQ2" resultClass="cmap" parameterClass="cmap" >
 	    /* payment.getUserInfoLangQ2 */
 	    	SELECT 
@@ -867,7 +867,7 @@
 	    	AND a.SUBJSEQ=b.SUBJSEQ 														
 	</select>
 	
-	<!-- 결제정보 입력 -->
+	<!---->
 	<update id="insertPayment" parameterClass="cmap">
         /* payment.insertPayment */
         INSERT INTO T_LMS_PAYMENT
@@ -958,7 +958,7 @@
 		]]>
 	</update>
 	
-	<!-- 환불정보 UPDATE  -->
+	<!---->
 	<update id="updatePaymentRefund" parameterClass="cmap"  >
 		 UPDATE T_LMS_PAYMENT A SET 
 		 	   RECOGSTATE    = #p_recogstate#
@@ -995,7 +995,7 @@
 		  WHERE SEQ = #p_seq#
     </update>
 	
-	<!--사용자 환불요청상태로 정보 UPDATE  -->
+	<!---->
 	<update id="updatePaymentRefundRequest" parameterClass="cmap">
 		 UPDATE T_LMS_PAYMENT_DAMO A SET
 			   RECOGSTATE  		= #p_recogstate#
@@ -1018,7 +1018,7 @@
 			    AND  RECOGSTATE IN ('Y', 'N')
 	</update>
 
-	<!-- 환불 완료 상태로  정보 UPDATE  E -->
+	<!---->
 	<update id="updatePaymentRefundFinish" parameterClass="cmap">
 		 UPDATE T_LMS_PAYMENT A SET 									
 			   RECOGSTATE  		= #p_recogstate#
@@ -1033,7 +1033,7 @@
 			    AND  RECOGSTATE IN ('D')
 	</update>
 		
-	<!--  결제 정보 (결제여부 ) 업데이트  -->
+	<!---->
 	<update id="updatePaymentRecogState" parameterClass="cmap"  >
 			UPDATE T_LMS_PAYMENT
 				SET 		
@@ -1056,7 +1056,7 @@
 				    AND SUBJ = #p_subj#
 	</update>
 	
-	<!--  자격시험 결제 정보 (결제여부 ) 업데이트  -->
+	<!---->
 	<update id="updateRightTestPaymentRecogState" parameterClass="cmap"  >
 			UPDATE T_LMS_PAYMENT
 				SET 		
@@ -1078,7 +1078,7 @@
 				    AND USERID = #p_userid#
 	</update>
 	
-	<!--  결제방법, 서류 첨부 여부 수정   -->
+	<!---->
 	<update id="updatePaymentMethodDocuments" parameterClass="cmap"  >
 			UPDATE T_LMS_PAYMENT
 				SET 		
@@ -1098,7 +1098,7 @@
 	</update>
 	
 	
-	<!--  원서접수의 결제 및 원서접수 상태값을 "TF" 완료로 변경  -->
+	<!---->
 	<update id="updateTestRightApplystateChange" parameterClass="cmap"  >
 			UPDATE T_LMS_RIGHTAPPLY
 			   SET APPLYSTATE = 'PF'
@@ -1108,7 +1108,7 @@
 			  AND USERID = #p_userid#
 	</update>
 
-	<!--  회원사 여부  업데이트  -->
+	<!---->
 	<update id="updateProposeBiyongPrice" parameterClass="cmap"  >
 			UPDATE T_LMS_PROPOSE
 				SET BIYONG = #p_biyong#
@@ -1122,7 +1122,7 @@
 				    AND USERID = #p_userid#
 	</update>
 	
-	<!-- 실시신고 확정 (환급) -->
+	<!---->
 	<update id="updateImplNoti" parameterClass="cmap">
 		<![CDATA[ /* payment."updateImplNoti" */
 		UPDATE T_LMS_STUDENT
@@ -1216,7 +1216,7 @@
             , #p_vact_date# )
 	</insert>
 	
-	<!-- 결제 현황에서 변경 버튼을 누를경우 삭제한다 -->
+	<!---->
 	<delete id="deleteInipay" parameterClass="cmap">
 		<![CDATA[	/* payment.deleteInipay */
 			DELETE FROM T_PAY_INIPAY
@@ -1276,12 +1276,12 @@
             , #p_no_cshr_appl#
             , #p_no_cshr_tid# )
 	</insert>
-	<!--  과정 기수 결제관리의  과정명/기수 가져오기  -->
+	<!---->
 	<select id="getPaymentSubjNmSubjSeq" parameterClass = "cmap" resultClass="cmap">
 		SELECT GET_SUBJNM(SUBJ)SUBJNM , SUBJSEQ  FROM T_LMS_SUBJSEQ WHERE SUBJ = #p_subj#   	
      </select>	
      
-     <!--  환불 처리중으로 수정하기. -->
+     <!---->
      <update id="updateRePayRecogstate" parameterClass="cmap"  >
 			UPDATE T_LMS_PAYMENT
 				  SET   RECOGSTATE = #p_recogstate#
@@ -1301,7 +1301,7 @@
 			WHERE SEQ = #p_seq#
 	</update>
 	
-	<!--  회원/비회원/특별할인리스트   -->
+	<!---->
 	<select id="getSubjDiscountAll" parameterClass = "cmap" resultClass="cmap"> 
 		SELECT '98' TARGETCD , '회원' CODENM FROM DUAL 
 		UNION 
@@ -1310,7 +1310,7 @@
 		SELECT  TARGETCD ,GET_CODENM('0109',TARGETCD) CODENM   FROM  T_LMS_SUBJDISCOUNT 
     </select>
 	
-	<!--  회원/ 비회원/ 특별할인  교육비 구하기    -->
+	<!---->
 	<select id="getSubjBiyong" parameterClass = "cmap" resultClass="string">
 		SELECT CASE WHEN #p_pricetype# = '99' THEN ( SELECT BIYONG FROM T_LMS_SUBJ WHERE SUBJ = #p_subj# )  /* 비회원가 */
 			WHEN #p_pricetype# = '98' THEN ( SELECT MEMBERBIYONG FROM T_LMS_SUBJ WHERE SUBJ = #p_subj# )  /* 회원가 */
@@ -1318,7 +1318,7 @@
 		FROM DUAL 
     </select>
     
-    <!-- 결제관리  고용보험 변경  -->
+    <!---->
 	<update id="updateCostSupport" parameterClass="cmap">
 		<![CDATA[ /* payment.updateCostSupport */
 		UPDATE T_LMS_PROPOSE
@@ -1332,7 +1332,7 @@
 		]]>
 	</update>
 	
-	<!-- 수강신청 영문이름 수정하기   -->
+	<!---->
 	<update id="updateProposeEngName" parameterClass="cmap">
 		<![CDATA[ /* payment.updateProposeEngName */
 		UPDATE T_LMS_PROPOSE
@@ -1346,14 +1346,14 @@
 		]]>
 	</update>
 	
-	<!-- 회/비/특별할인 변경시 리스트     -->
+	<!---->
 	<select id="selectPriceTypeItem" resultClass="cmap" parameterClass="cmap" >
 	    	SELECT TARGETCD CODE, GET_CODENM('0109', TARGETCD) CODENM, B.SUBJ, B.SUBJSEQ, B.YEAR, B.USERID 
 	    	FROM T_LMS_SUBJDISCOUNT A, T_LMS_PAYMENT B
 	    	WHERE A.SUBJ = B.SUBJ AND B.SEQ = #p_seq#								
 	</select>
 
-	<!-- 결제테이블의 과정/ 자격시험 키값 select      -->
+	<!---->
 	<select id="selectPaymentCouseRightInfo" resultClass="cmap" parameterClass="cmap" >
 	    	SELECT USERID, SUBJ, SUBJSEQ, YEAR,RIGHTNO, APPLYNUM, INNINGSEQ , SEQ , INSTALLMENT_SEQ, RECOGSTATE, REFUNDREQDT, REFUNDACCOUNT, REFUNDDEPOSITOR, REFUNDAMOUNT, PAYDATE, PAYMETHOD, MOID  
 	    	FROM T_LMS_PAYMENT
@@ -1366,7 +1366,7 @@
 	    </isEmpty>																								
 	</select>
 	
-	<!-- 단위수강   결제정보 리스트를 가져온다.  -->
+	<!---->
 	<select id="selectPaymentSectionPageList" resultClass="cmap" parameterClass="cmap">
 	    <include refid="pageingTop" />
 	    	<![CDATA[
@@ -1484,7 +1484,7 @@
 	    		ORDER BY A.INDATE DESC 
 		<include refid="pageingBottom" />	
 	</select>		
-	<!--  단위 수강 환불 정보 리스트를 가져온다. -->
+	<!---->
 	<select id="selectRefundSectionPageList" resultClass="cmap" parameterClass="cmap">
 	    <include refid="pageingTop" />
 	    	<![CDATA[
@@ -1646,7 +1646,7 @@
 		  ]]>																								
 	</select>	
 	
-	<!--  결제 정보 변경시 HISTORY -->
+	<!---->
 	<update id="insertPaymentChangeHistory" parameterClass="cmap"  >
 		<![CDATA[
 		  INSERT INTO T_LMS_PAYMENT_CHANGEHISTORY (
@@ -1666,7 +1666,7 @@
 		]]>
 	</update>
 	
-	<!--  환불전표 처리 시 T_LMS_PAYMENT 테이블에 인명계정일련번호 업데이트 -->
+	<!---->
 	<update id="updatePnaccCd" parameterClass="cmap"  >
 		<![CDATA[
 		  UPDATE T_LMS_PAYMENT 
@@ -1675,7 +1675,7 @@
 		]]>
 	</update>
 	
-	<!-- 결제 수단 변경시 변경 이력을 남기기위해 T_LMS_PAYMENT 의 RECOGSTATE 컬럼 취소(C) 로 설정 -->
+	<!---->
 	<update id="updatePaymentRecogstateC" parameterClass="cmap"  >
 	    /* payment.updatePaymentRecogstateC */
 		<![CDATA[
@@ -1689,7 +1689,7 @@
 		]]>
 	</update>
 	
-	<!--  토플 시험 정보 (결제여부 ) 업데이트  -->
+	<!---->
 	<update id="updateToeflPaymentRecogState" parameterClass="cmap"  >
 			UPDATE T_LMS_PAYMENT
 				SET 		

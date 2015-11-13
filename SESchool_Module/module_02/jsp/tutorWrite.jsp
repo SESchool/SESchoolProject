@@ -1,16 +1,3 @@
-<%--
- * @(#)SystemCode Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * T_LMS_TUTOR 테이블 List Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2009. 11. 12.  bgcho       Initial Release
- ************************************************
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>

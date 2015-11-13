@@ -1,16 +1,3 @@
-<%--
- * @(#)ClassifyCommon Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * T_LMS_SUBJATT 테이블 Write Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 11. 04.  bluedove       Initial Release
- ************************************************
---%>
 <%@page import="com.sinc.common.FileDTO"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8" %>

@@ -1,20 +1,3 @@
-/**
- * @(#)TbCateAction
- *
- * Copyright 2006 mediopia. All Rights Reserved.
- *
- * T_LMS_CODEGUBUN, T_LMS_CODE 테이블 Action 클래스.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 11. 06.  leehj       Initial Release
- ************************************************
- *
- * @author      leehj
- * @version     1.0
- * @since       2010. 11. 06.
- */
 
 package com.sinc.lms.comp;
 

@@ -1,21 +1,3 @@
-/**
- * @(#)MemberBaction
- *
- * Copyright 2010 fmwave. All Rights Reserved.
- *
- * T_LMS_Member 테이블 Action 클래스.
- * 관리자단 메뉴를 관리하는 클래스
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 10. 28.  fmwave       Initial Release
- ************************************************
- *
- * @author      bluedove
- * @version     1.0
- * @since       2010. 10. 28.
- */
 
 package com.sinc.cms.contents;
 

@@ -1,16 +1,3 @@
-<%--
- * @(#)Sample Template
- *
- * Copyright 2010 한국무역협회 무역아카데미. All Rights Reserved.
- *
- * T_LMS_STUDENT 테이블 List Template.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2011. 03. 24.  bgcho       Initial Release
- ************************************************
---%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@page import="com.sinc.common.FormatDate" %>
 <%@ include file = "/jsp/front/common/commonInc.jsp" %>

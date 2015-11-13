@@ -1,20 +1,3 @@
-/**
- * @(#)TbCateMgr
- *
- * Copyright 2006 mediopia. All Rights Reserved.
- *
- * T_LMS_DIC, T_LMS_DICGROUP 테이블 Mgr 클래스.
- *
- ************************************************
- * DATE         AUTHOR      DESCRIPTION
- * ----------------------------------------------
- * 2010. 12. 18.  leehj       Initial Release
- ************************************************
- *
- * @author      leehj
- * @version     1.0
- * @since       2010. 12. 18.
- */
 
 package com.sinc.lms.propose;
 
@@ -53,12 +36,6 @@ public class ProposeMgr extends AbstractMgr {
 
 	Logger log = Logger.getLogger(ProposeMgr.class);
 
-	/**
-	 * 부분수강 수강신청할 정보를 가져온다.
-	 * @param box
-	 * @return
-	 * @throws Exception
-	 */
 	public Box selectProposeSelApplyInfo(Box box) throws Exception {
 		Box data = null;
         try {
@@ -72,12 +49,6 @@ public class ProposeMgr extends AbstractMgr {
 		return data;
 	}
 
-	/**
-	 * GLMP 수강신청 폼 정보를 가져온다
-	 * @param box
-	 * @return
-	 * @throws Exception
-	 */
 	public Box selectProposeFormGLMP(Box box) throws Exception{
 		Box data = null;
         try {
@@ -91,12 +62,6 @@ public class ProposeMgr extends AbstractMgr {
 		return data;
 	}
 
-	/**
-	 * 수강 및 결제 상태 정보를 가져온다
-	 * @param box
-	 * @return
-	 * @throws Exception
-	 */
 	public Box selectPropPayState(Box box) throws Exception{
 		Box data = null;
         try {
@@ -110,12 +75,6 @@ public class ProposeMgr extends AbstractMgr {
 		return data;
 	}
 
-	/**
-	 * 분납과정의에서 현재 날짜에 결제 가능한 seq 를 가져온다.
-	 * @param box
-	 * @return
-	 * @throws Exception
-	 */
 	public Box selectPayInstallmentSeqMin(Box box) throws Exception {
 		Box data = null;
         try {
@@ -129,12 +88,6 @@ public class ProposeMgr extends AbstractMgr {
 		return data;
 	}
 
-	/**
-	 * 무역협회 회원사인지 확인한다.
-	 * @param box
-	 * @return
-	 * @throws Exception
-	 */
 	public Box getKitaMemberAuthCheck(Box box) throws Exception{
 		Box data = null;
         try {
@@ -147,12 +100,6 @@ public class ProposeMgr extends AbstractMgr {
         }
 		return data;
 	}
-	/**
-	 * 무역마스터 학생인지 확인한다
-	 * @param box
-	 * @return
-	 * @throws Exception
-	 */
 	public Box getTradeGraduCheck(Box box) throws Exception{
 		Box data = null;
 		try {
@@ -166,12 +113,6 @@ public class ProposeMgr extends AbstractMgr {
 		return data;
 	}
 
-	/**
-	 * 결제모듈(이니페이) 설정 정보를 가져온다.
-	 * @param box
-	 * @return
-	 * @throws Exception
-	 */
 	public Box getInipayInfo(Box box) throws Exception{
 		Box data = null;
 		try {
@@ -190,12 +131,6 @@ public class ProposeMgr extends AbstractMgr {
 		return data;
 	}
 	
-	/**
-	 * IC.N 결제 대상 과정 정보를 가져온다.
-	 * @param box
-	 * @return
-	 * @throws Exception
-	 */
 	public boolean getIcnPayInfo(String subj) throws Exception{
 		boolean result = false;
 		String payResult = null;
@@ -213,12 +148,6 @@ public class ProposeMgr extends AbstractMgr {
 		return result;
 	}
 
-	/**
-	 * 가상계좌 정보를 가져온다
-	 * @param box
-	 * @return
-	 * @throws Exception
-	 */
 	public Box selectVBankInfo(Box box) throws Exception{
 		Box data = null;
         try {
@@ -232,16 +161,7 @@ public class ProposeMgr extends AbstractMgr {
 		return data;
 	}
 
-	/**
-	 * 결제시작
-	 * @param request
-	 * @param box
-	 * @throws Exception
-	 */
 	public void doINISecureStart( HttpServletRequest request, Box box ) throws Exception {
-		/**
-		 * 1. INIpay 설정정보 가져오기
-		 */
 		Box boxProposeApplyInfo = (Box)box.getObject("boxProposeApplyInfo");
 		Box boxInipayInfo = this.getInipayInfo(box);
 		boolean boxIcnpayInfo = this.getIcnPayInfo(box.getString("p_subj"));
@@ -254,11 +174,6 @@ public class ProposeMgr extends AbstractMgr {
 			Box vBank = (Box)box.getObject("data_vBank");
 			if(vBank != null){
 				v_date = vBank.getString("PAYLIMIT");
-				/*
-				if(!"".equals(v_date)){
-					v_date = v_date.substring(0, 4) + v_date.substring(5, 7) + v_date.substring(8, 10);
-				}
-				*/
 			}
 		}
 		
@@ -271,11 +186,8 @@ public class ProposeMgr extends AbstractMgr {
 			c.set(Integer.parseInt(v_date.substring(0,4)), Integer.parseInt(v_date.substring(4,6))-1, Integer.parseInt(v_date.substring(6,8)));
 			
 			if(today.getTimeInMillis() < c.getTimeInMillis()){
-				// 수업시작일이 한달 넘게 남았을 경우 오늘부터 30일 후까지  
 				c = today;
 			} else {
-				// 수업시작일이 한달 이내일 경우 수업시작 하루 전까지
-				// 가상계좌 납입기한 까지
 				c.add(Calendar.DATE, 0);
 			}
 			
@@ -301,11 +213,8 @@ public class ProposeMgr extends AbstractMgr {
 			c.set(Integer.parseInt(v_date.substring(0,4)), Integer.parseInt(v_date.substring(4,6))-1, Integer.parseInt(v_date.substring(6,8)));
 			
 			if(today.getTimeInMillis() < c.getTimeInMillis()){
-				// 수업시작일이 한달 넘게 남았을 경우 오늘부터 30일 후까지  
 				c = today;
 			} else {
-				// 수업시작일이 한달 이내일 경우 수업시작 하루 전까지
-				// 가상계좌 납입기한 까지
 				c.add(Calendar.DATE, 0);
 			}
 			
@@ -321,22 +230,9 @@ public class ProposeMgr extends AbstractMgr {
 			vbank_date= "vbank("+year+month+date+")";
 		}
 
-		/**
-		 * 2. INIpay 인스턴스 생성
-		 */
 		INIpay50 inipay = new INIpay50();
 
-	    /**
-	     * 3. 암호화 대상/값 설정   테스트 수정
-	     */
-//		inipay.SetField("inipayhome", boxInipayInfo.getString("INIPAYHOME"));	// 이니페이 홈디렉터리(상점수정 필요)
 		inipay.SetField("inipayhome", "C:/INIpay50");	// 이니페이 홈디렉터리(상점수정 필요)	//로컬실행용
-		//***********************************************************************************************************
-		//* admin 은 키패스워드 변수명입니다. 수정하시면 안됩니다. 1111의 부분만 수정해서 사용하시기 바랍니다.      *
-		//* 키패스워드는 상점관리자 페이지(https://iniweb.inicis.com)의 비밀번호가 아닙니다. 주의해 주시기 바랍니다.*
-		//* 키패스워드는 숫자 4자리로만 구성됩니다. 이 값은 키파일 발급시 결정됩니다.                               *
-		//* 키패스워드 값을 확인하시려면 상점측에 발급된 키파일 안의 readme.txt 파일을 참조해 주십시오.             *
-		//***********************************************************************************************************
 		if (boxIcnpayInfo) {			// 토익 특별시험, 비즈니스 외국어
 			inipay.SetField("admin", "1111");
 		} else if (box.getString("p_subj").equals("3044")
@@ -345,25 +241,19 @@ public class ProposeMgr extends AbstractMgr {
 				|| box.getString("p_subj").equals("3286")
 				|| box.getString("p_subj").equals("3287")
 				|| box.getString("p_subj").equals("3283")
-				|| box.getString("p_subj").equals("3295")) { // 대학생 무역캠프
+				|| box.getString("p_subj").equals("3295")) { 
 			inipay.SetField("admin", "1111");
 		} else {
-			inipay.SetField("admin", boxInipayInfo.getString("ADMIN")); 		// 키패스워드(상점아이디에 따라 변경)
+			inipay.SetField("admin", boxInipayInfo.getString("ADMIN")); 		
 		}
 		
-		inipay.SetField("type", boxInipayInfo.getString("TYPE")); 				// 고정 (절대 수정 불가)
-		inipay.SetField("type", "chkfake"); 									// 고정 (절대 수정 불가)
-		inipay.SetField("enctype", boxInipayInfo.getString("ENCTYPE")); 		// 고정 (절대 수정 불가) asym:비대칭, symm:대칭
-		inipay.SetField("checkopt", boxInipayInfo.getString("CHECKOPT")); 		// 고정 (절대 수정 불가) base64함:false, base64안함:true
-		inipay.SetField("debug", boxInipayInfo.getString("DEBUG")); 			// 로그모드("true"로 설정하면 상세로그가 생성됨.)
-//		inipay.SetField("debug", "true");
+		inipay.SetField("type", boxInipayInfo.getString("TYPE")); 			
+		inipay.SetField("type", "chkfake"); 									
+		inipay.SetField("enctype", boxInipayInfo.getString("ENCTYPE")); 		
+		inipay.SetField("checkopt", boxInipayInfo.getString("CHECKOPT")); 		
+		inipay.SetField("debug", boxInipayInfo.getString("DEBUG")); 			
 
-		//필수항목 : mid, price, nointerest, quotabase
-		//추가가능 : INIregno, oid
-		//*주의* : 	추가가능한 항목중 암호화 대상항목에 추가한 필드는 반드시 hidden 필드에선 제거하고
-		//          SESSION이나 DB를 이용해 다음페이지(INIsecureresult.jsp)로 전달/셋팅되어야 합니다.
 		if (boxIcnpayInfo) {
-		//	inipay.SetField("mid", "iseenorg01"); 				//토익 상점아이디
 		} else if (box.getString("p_subj").equals("3044")
 				|| box.getString("p_subj").equals("3284")
 				|| box.getString("p_subj").equals("3285")
@@ -371,25 +261,17 @@ public class ProposeMgr extends AbstractMgr {
 				|| box.getString("p_subj").equals("3287")
 				|| box.getString("p_subj").equals("3283")
 				|| box.getString("p_subj").equals("3295")) {
-		//	inipay.SetField("mid", "kitanet011"); // 대학생 무역캠프(자격시험 상점 아이디)
 		} else {
-		//	inipay.SetField("mid", boxInipayInfo.getString("MID")); 				//상점아이디
 		}
-		inipay.SetField("mid", "INIpayTest"); 				//상점아이디
-		inipay.SetField("price", boxProposeApplyInfo.getString("PRICE")); 		// 가격
-		inipay.SetField("nointerest", boxInipayInfo.getString("NOINTEREST")); 	//무이자여부
-		inipay.SetField("quotabase", boxInipayInfo.getString("QUOTABASE")); 	//할부기간
+		inipay.SetField("mid", "INIpayTest"); 			
+		inipay.SetField("price", boxProposeApplyInfo.getString("PRICE")); 		
+		inipay.SetField("nointerest", boxInipayInfo.getString("NOINTEREST")); 
+		inipay.SetField("quotabase", boxInipayInfo.getString("QUOTABASE")); 	
 		String[] parameters = {"price","nointerest", "quotabase"};
 		inipay.SetField("parameters",parameters);
 
-		/**
-		 * 4. 암호화 대상/값을 암호화함
-		 */
 		inipay.startAction();
 
-		/**
-		 * 5. 암호화 결과
-		 */
 		String rn_resultMsg = "";
 		box.put("ResultCode", inipay.GetResult("ResultCode"));
 		if ( inipay.GetResult("ResultCode") != "00" ) {
@@ -397,9 +279,6 @@ public class ProposeMgr extends AbstractMgr {
 			box.put("rn_resultMsg", rn_resultMsg);
 		}
 
-		/**
-		 * 6. 세션정보 저장
-		 */
 		HttpSession session = request.getSession();
 		session.setAttribute("INI_MID"    , inipay.GetResult("mid"));
 		session.setAttribute("INI_RN"     , inipay.GetResult("rn"));
@@ -407,22 +286,13 @@ public class ProposeMgr extends AbstractMgr {
 		session.setAttribute("INI_PRICE"  , inipay.GetResult("price") );
 		session.setAttribute("admin"      , inipay.GetResult("admin"));
 
-		/**
-		 * 7. 플러그인 전달 정보, hidden field 설정
-		 */
 		String ini_encfield = inipay.GetResult("encfield");
 		String ini_certid   = inipay.GetResult("certid");
 		box.put("ini_encfield", ini_encfield);
 		box.put("ini_certid", ini_certid);
 
-		/**
-		 * 8. 인스턴스 해제
-		 */
 		inipay = null;
 
-		/**
-		 * 9. hidden 폼태그 생성
-		 */
 		StringBuilder sbHtml = new StringBuilder();
 		sbHtml.append("<input type=\"hidden\" name=\"ini_encfield\" value=\"").append(ini_encfield).append("\">\n");
 		sbHtml.append("<input type=\"hidden\" name=\"ini_certid\" value=\"").append(ini_certid).append("\">\n");
@@ -453,63 +323,27 @@ public class ProposeMgr extends AbstractMgr {
 		box.put("sbHtml", sbHtml);
 	}
 
-	/**
-	 * 결제정보 재 세팅   ( 마일리지를 제외한 최종 결제금액 재설정 )
-	 * @param request
-	 * @param box
-	 * @throws Exception
-	 */
 	public void doINISecureReStart( HttpServletRequest request, Box box ) throws Exception {
-		/**
-		 * 1. INIpay 설정정보 가져오기
-		 */
 		Box boxInipayInfo = this.getInipayInfo(box);
 		box.put("boxInipayInfo", boxInipayInfo);
-		/**
-		 * 2. INIpay 인스턴스 생성
-		 */
 		INIpay50 inipay = new INIpay50();
 
-	    /**
-	     * 3. 암호화 대상/값 설정   테스트 수정
-	     */
-//		inipay.SetField("inipayhome", boxInipayInfo.getString("INIPAYHOME"));	// 이니페이 홈디렉터리(상점수정 필요)
-		inipay.SetField("inipayhome", "C:/INIpay50");	// 이니페이 홈디렉터리(상점수정 필요)
-		//***********************************************************************************************************
-		//* admin 은 키패스워드 변수명입니다. 수정하시면 안됩니다. 1111의 부분만 수정해서 사용하시기 바랍니다.      *
-		//* 키패스워드는 상점관리자 페이지(https://iniweb.inicis.com)의 비밀번호가 아닙니다. 주의해 주시기 바랍니다.*
-		//* 키패스워드는 숫자 4자리로만 구성됩니다. 이 값은 키파일 발급시 결정됩니다.                               *
-		//* 키패스워드 값을 확인하시려면 상점측에 발급된 키파일 안의 readme.txt 파일을 참조해 주십시오.             *
-		//***********************************************************************************************************
-		inipay.SetField("admin", boxInipayInfo.getString("ADMIN")); 		// 키패스워드(상점아이디에 따라 변경)
+		inipay.SetField("inipayhome", "C:/INIpay50");	
+		inipay.SetField("admin", boxInipayInfo.getString("ADMIN")); 	
 
-		inipay.SetField("type", boxInipayInfo.getString("TYPE")); 				// 고정 (절대 수정 불가)
-		inipay.SetField("type", "chkfake"); 									// 고정 (절대 수정 불가)
-		inipay.SetField("enctype", boxInipayInfo.getString("ENCTYPE")); 		// 고정 (절대 수정 불가) asym:비대칭, symm:대칭
-		inipay.SetField("checkopt", boxInipayInfo.getString("CHECKOPT")); 		// 고정 (절대 수정 불가) base64함:false, base64안함:true
-		inipay.SetField("debug", boxInipayInfo.getString("DEBUG")); 			// 로그모드("true"로 설정하면 상세로그가 생성됨.)
-//		inipay.SetField("debug", "true");
-
-		//필수항목 : mid, price, nointerest, quotabase
-		//추가가능 : INIregno, oid
-		//*주의* : 	추가가능한 항목중 암호화 대상항목에 추가한 필드는 반드시 hidden 필드에선 제거하고
-		//          SESSION이나 DB를 이용해 다음페이지(INIsecureresult.jsp)로 전달/셋팅되어야 합니다.
-//		inipay.SetField("mid", boxInipayInfo.getString("MID")); 				//상점아이디
-		inipay.SetField("mid", "INIpayTest"); 				//상점아이디
-		inipay.SetField("price", box.getString("p_price")); 		// 가격
-		inipay.SetField("nointerest", boxInipayInfo.getString("NOINTEREST")); 	//무이자여부
-		inipay.SetField("quotabase", boxInipayInfo.getString("QUOTABASE")); 	//할부기간
+		inipay.SetField("type", boxInipayInfo.getString("TYPE")); 				
+		inipay.SetField("type", "chkfake"); 									
+		inipay.SetField("enctype", boxInipayInfo.getString("ENCTYPE")); 		
+		inipay.SetField("checkopt", boxInipayInfo.getString("CHECKOPT")); 		
+		inipay.SetField("debug", boxInipayInfo.getString("DEBUG")); 			
+		inipay.SetField("mid", "INIpayTest"); 				
+		inipay.SetField("price", box.getString("p_price")); 		
+		inipay.SetField("nointerest", boxInipayInfo.getString("NOINTEREST")); 
+		inipay.SetField("quotabase", boxInipayInfo.getString("QUOTABASE")); 	
 		String[] parameters = {"price","nointerest", "quotabase"};
 		inipay.SetField("parameters",parameters);
-
-		/**
-		 * 4. 암호화 대상/값을 암호화함
-		 */
 		inipay.startAction();
 
-		/**
-		 * 5. 암호화 결과
-		 */
 		String rn_resultMsg = "";
 		box.put("ResultCode", inipay.GetResult("ResultCode"));
 		if ( inipay.GetResult("ResultCode") != "00" ) {
@@ -517,9 +351,6 @@ public class ProposeMgr extends AbstractMgr {
 			box.put("rn_resultMsg", rn_resultMsg);
 		}
 
-		/**
-		 * 6. 세션정보 저장
-		 */
 		HttpSession session = request.getSession();
 		session.setAttribute("INI_MID"    , inipay.GetResult("mid"));
 		session.setAttribute("INI_RN"     , inipay.GetResult("rn"));
@@ -527,28 +358,16 @@ public class ProposeMgr extends AbstractMgr {
 		session.setAttribute("INI_PRICE"  , inipay.GetResult("price") );
 		session.setAttribute("admin"      , inipay.GetResult("admin"));
 
-		/**
-		 * 7. 플러그인 전달 정보, hidden field 설정
-		 */
 		String ini_encfield = inipay.GetResult("encfield");
 		String ini_certid   = inipay.GetResult("certid");
 
 		box.put("ini_encfield", ini_encfield);
 		box.put("ini_certid", ini_certid);
 
-		/**
-		 * 8. 인스턴스 해제
-		 */
 		inipay = null;
 
 	}
 
-	/**
-	 * 결제
-	 * @param request
-	 * @param box
-	 * @throws Exception
-	 */
 	public int doINISecureResult( HttpServletRequest request, Box box ) throws Exception {
 
 		int retVal = 0;
